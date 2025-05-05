@@ -53,7 +53,7 @@ export default function NavBar() {
               <a
                 key={href}
                 href={href}
-                className={`navbar-link transition-colors ${
+                className={`navbar-link relative pb-3 top-2 transition-colors ${
                   pathname === href ? 'link-active' : 'border-b border-transparent'
                 }`}
                 aria-current={pathname === href ? 'page' : undefined}
