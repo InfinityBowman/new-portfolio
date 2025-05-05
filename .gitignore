@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# IDE specific files
+.vscode/
+
+# OS generated files
+.DS_Store
+.DS_Store?
