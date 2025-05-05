@@ -11,17 +11,26 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
+    const particles: Particle[] = [];
+    let pixelRatio = window.devicePixelRatio || 1;
+
+    // Resize handler with DPI scaling
     function resizeCanvas() {
       if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const rect = canvas.getBoundingClientRect();
+        // Set the canvas size considering device pixel ratio
+        canvas.width = rect.width * pixelRatio;
+        canvas.height = rect.height * pixelRatio;
+        // Scale all drawing operations
+        ctx!.scale(pixelRatio, pixelRatio);
+
+        // Reinitialize particles when resizing
+        initParticles();
       }
     }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
     // Particle class
     class Particle {
@@ -33,15 +42,17 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
       color: string;
 
       constructor() {
-        // Particle will start randomly somewhere on the canvas
-        this.x = Math.random() * canvas!.width;
-        this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 3 + 1;
+        const displayWidth = canvas!.width / pixelRatio;
+        const displayHeight = canvas!.height / pixelRatio;
+
+        this.x = Math.round(Math.random() * displayWidth);
+        this.y = Math.round(Math.random() * displayHeight);
+        this.size = Math.max(1, Math.round(Math.random() * 3 + 0.5)); // Integer sizes
 
         const signX = Math.random() < 0.5 ? -1 : 1;
         const signY = Math.random() < 0.5 ? -1 : 1;
-        this.speedX = signX * Math.random() * 2 + 0.1;
-        this.speedY = signY * Math.random() * 2 + 0.1;
+        this.speedX = signX * (Math.random() * 2 + 0.1);
+        this.speedY = signY * (Math.random() * 2 + 0.1);
         this.color = `hsl(${Math.random() * 360}, 100%, 100%)`;
       }
 
@@ -49,64 +60,141 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
         this.x += this.speedX;
         this.y += this.speedY;
 
+        // Round positions to avoid subpixel rendering
+        this.x = Math.round(this.x);
+        this.y = Math.round(this.y);
+
+        const displayWidth = canvas!.width / pixelRatio;
+        const displayHeight = canvas!.height / pixelRatio;
+
         // Bounce off edges
-        if (this.x + this.size > canvas!.width || this.x - this.size < 0) {
+        if (this.x + this.size > displayWidth || this.x - this.size < 0) {
           this.speedX = this.speedX * -1;
         }
-        if (this.y + this.size > canvas!.height || this.y - this.size < 0) {
+        if (this.y + this.size > displayHeight || this.y - this.size < 0) {
           this.speedY = this.speedY * -1;
         }
       }
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
 
-    // Create a bunch of particles
-    const particles: Particle[] = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push(new Particle());
-    }
-
-    // Connect nearby particles with lines
-    function connectParticles() {
-      if (!ctx) return;
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 80) {
-            ctx.beginPath();
-            ctx.strokeStyle = particles[i].color;
-            ctx.lineWidth = 0.2;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
+        // For small particles, use rectangles instead of circles
+        if (this.size <= 1) {
+          ctx.fillStyle = this.color;
+          ctx.fillRect(this.x, this.y, this.size, this.size);
+        } else {
+          // For larger particles, use crisp circles
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
         }
       }
     }
 
-    // Animation loop
-    function animate() {
+    function initParticles() {
+      particles.length = 0; // Clear existing particles
+
+      const displayWidth = canvas!.width / pixelRatio;
+      const displayHeight = canvas!.height / pixelRatio;
+
+      // Calculate number of particles based on screen size
+      const particleCount = Math.min(
+        100, // Maximum particles
+        Math.floor((displayWidth * displayHeight) / 20000), // Scale with screen size
+      );
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    initParticles();
+
+    // Connect nearby particles with lines - optimized
+    function connectParticles() {
+      if (!ctx) return;
+
+      // Only check connections for particles within a certain distance
+      const maxDistance = 100;
+      const gridSize = Math.ceil(maxDistance);
+      const grid: Record<string, Particle[]> = {};
+
+      // Place particles in grid cells for spatial partitioning
+      particles.forEach((particle) => {
+        const cellX = Math.floor(particle.x / gridSize);
+        const cellY = Math.floor(particle.y / gridSize);
+        const key = `${cellX},${cellY}`;
+
+        if (!grid[key]) grid[key] = [];
+        grid[key].push(particle);
+      });
+
+      // Check connections only with nearby grid cells
+      particles.forEach((p1) => {
+        const cellX = Math.floor(p1.x / gridSize);
+        const cellY = Math.floor(p1.y / gridSize);
+
+        // Check 9 surrounding cells (3x3 grid)
+        for (let x = -1; x <= 1; x++) {
+          for (let y = -1; y <= 1; y++) {
+            const key = `${cellX + x},${cellY + y}`;
+            const cellParticles = grid[key] || [];
+
+            cellParticles.forEach((p2) => {
+              if (p1 === p2) return; // Skip self
+
+              const dx = p1.x - p2.x;
+              const dy = p1.y - p2.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < 80) {
+                ctx.beginPath();
+                ctx.strokeStyle = p1.color;
+                ctx.lineWidth = 0.5; // Slightly thicker for better visibility
+                ctx.globalAlpha = 1 - distance / 80; // Fade out with distance
+                ctx.moveTo(Math.round(p1.x), Math.round(p1.y));
+                ctx.lineTo(Math.round(p2.x), Math.round(p2.y));
+                ctx.stroke();
+              }
+            });
+          }
+        }
+      });
+
+      // Reset opacity
+      ctx.globalAlpha = 1;
+    }
+
+    // Use requestAnimationFrame with throttling
+    let lastTime = 0;
+    const fps = 30; // Target 30 FPS instead of 60
+    const frameInterval = 1000 / fps;
+
+    function animate(timestamp: number) {
       if (!ctx || !canvas) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const deltaTime = timestamp - lastTime;
 
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+      if (deltaTime >= frameInterval) {
+        lastTime = timestamp - (deltaTime % frameInterval);
+
+        const displayWidth = canvas.width / pixelRatio;
+        const displayHeight = canvas.height / pixelRatio;
+
+        ctx.clearRect(0, 0, displayWidth, displayHeight);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+
+        connectParticles();
       }
 
-      connectParticles();
       requestAnimationFrame(animate);
     }
 
