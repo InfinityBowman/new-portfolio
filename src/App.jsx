@@ -4,10 +4,10 @@ import NavBarWrapper from '@/components/nav/navbar-wrapper';
 import Footer from '@/components/footer';
 
 // Lazy load page components
-import HomePage from '@/pages/Home';
-// const HomePage = lazy(() => import('@/pages/HomePage'));
+const HomePage = lazy(() => import('@/pages/Home'));
 const AboutPage = lazy(() => import('@/pages/About'));
 const HobbiesPage = lazy(() => import('@/pages/Hobbies'));
+const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -60,7 +60,13 @@ export default function App() {
       case '/hobbies':
         return <HobbiesPage />;
       default:
-        return <HomePage />;
+        // Check if the path exists in your application's routes
+        const validPaths = ['/', '/about', '/hobbies'];
+        if (validPaths.includes(currentPath)) {
+          return <HomePage />;
+        }
+        // If not a valid path, show the 404 page
+        return <NotFoundPage />;
     }
   };
 
