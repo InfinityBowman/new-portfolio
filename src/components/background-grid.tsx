@@ -11,13 +11,20 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
+
+    // Track device pixel ratio for high-DPI screens
+    const pixelRatio = window.devicePixelRatio || 1;
 
     function resizeCanvas() {
       if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const rect = canvas.getBoundingClientRect();
+        // Set canvas dimensions with DPI scaling
+        canvas.width = rect.width * pixelRatio;
+        canvas.height = rect.height * pixelRatio;
+        // Scale all drawing operations
+        ctx!.scale(pixelRatio, pixelRatio);
       }
     }
 
@@ -33,15 +40,18 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
     function drawGrid() {
       if (!canvas || !ctx) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const displayWidth = canvas.width / pixelRatio;
+      const displayHeight = canvas.height / pixelRatio;
+
+      ctx.clearRect(0, 0, displayWidth, displayHeight);
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1; // Kept at 1 for clean lines
 
       // Calculate grid dimensions with extra padding to ensure no visible edges
       // Add extra columns and rows on each side to make it appear endless
       const padding = Math.ceil(waveAmplitude / gridSpacing) + 2; // Extra cells for wave movement
-      const cols = Math.ceil(canvas.width / gridSpacing) + padding * 2;
-      const rows = Math.ceil(canvas.height / gridSpacing) + padding * 2;
+      const cols = Math.ceil(displayWidth / gridSpacing) + padding * 2;
+      const rows = Math.ceil(displayHeight / gridSpacing) + padding * 2;
 
       // Offset to start the grid before the visible area
       const startX = -padding * gridSpacing;
@@ -55,7 +65,7 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
           // Wave effect propagates from left to right
           const distanceFromLeft = (xPos - startX) / (cols * gridSpacing);
           const offset = Math.sin(time - distanceFromLeft * 4) * waveAmplitude;
-          const yPos = startY + y * gridSpacing + offset;
+          const yPos = Math.round(startY + y * gridSpacing + offset); // Round for pixel alignment
 
           if (x === 0) {
             ctx.moveTo(xPos, yPos);
@@ -74,12 +84,12 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
           // Wave effect follows horizontal lines
           const distanceFromLeft = (startX + x * gridSpacing) / (cols * gridSpacing);
           const offset = Math.sin(time - distanceFromLeft * 4) * waveAmplitude;
-          const xPos = startX + x * gridSpacing + Math.sin(time - (yPos / canvas.height) * 2) * (waveAmplitude / 2);
+          const xPos = Math.round(startX + x * gridSpacing + Math.sin(time - (yPos / displayHeight) * 2) * (waveAmplitude / 2)); // Round for pixel alignment
 
           if (y === 0) {
-            ctx.moveTo(xPos, yPos + offset);
+            ctx.moveTo(xPos, Math.round(yPos + offset));
           } else {
-            ctx.lineTo(xPos, yPos + offset);
+            ctx.lineTo(xPos, Math.round(yPos + offset));
           }
         }
         ctx.stroke();
