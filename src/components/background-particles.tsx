@@ -47,12 +47,12 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
 
         this.x = Math.round(Math.random() * displayWidth);
         this.y = Math.round(Math.random() * displayHeight);
-        this.size = Math.max(1, Math.round(Math.random() * 3 + 0.5)); // Integer sizes
+        this.size = Math.max(1.5, Math.round(Math.random() * 3 + 0.5)); // Integer sizes
 
         const signX = Math.random() < 0.5 ? -1 : 1;
         const signY = Math.random() < 0.5 ? -1 : 1;
-        this.speedX = signX * (Math.random() * 2 + 0.1);
-        this.speedY = signY * (Math.random() * 2 + 0.1);
+        this.speedX = signX * (Math.random() * 2 + 0.2);
+        this.speedY = signY * (Math.random() * 2 + 0.2);
         this.color = `hsl(${Math.random() * 360}, 100%, 100%)`;
       }
 
@@ -102,7 +102,7 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
       // Calculate number of particles based on screen size
       const particleCount = Math.min(
         100, // Maximum particles
-        Math.floor((displayWidth * displayHeight) / 20000), // Scale with screen size
+        Math.floor((displayWidth * displayHeight) / 15000), // Scale with screen size
       );
 
       for (let i = 0; i < particleCount; i++) {
