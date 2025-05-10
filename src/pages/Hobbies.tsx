@@ -1,10 +1,13 @@
-import React, { Suspense, lazy } from 'react';
-import { LoadingSpinner } from '@/components/spinner';
-import BackgroundCanvas from '@/components/background-grid';
+import React, { Suspense, lazy } from "react";
+import { LoadingSpinner } from "@/components/spinner";
+import BackgroundCanvas from "@/components/background-grid";
 
-const TopTrack = lazy(() => import('@/components/hobbies/top-track'));
-const MyTracks = lazy(() => import('@/components/hobbies/my-tracks'));
-const GraphicDesign = lazy(() => import('@/components/hobbies/graphic-design'));
+import MyTracks from "@/components/hobbies/my-tracks";
+import TopTrack from "@/components/hobbies/top-track";
+import GraphicDesign from "@/components/hobbies/graphic-design";
+// const TopTrack = lazy(() => import('@/components/hobbies/top-track'));
+// const MyTracks = lazy(() => import('@/components/hobbies/my-tracks'));
+// const GraphicDesign = lazy(() => import('@/components/hobbies/graphic-design'));
 
 export default function HobbiesPage() {
   return (

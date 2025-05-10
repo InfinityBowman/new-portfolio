@@ -51,8 +51,8 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
 
         const signX = Math.random() < 0.5 ? -1 : 1;
         const signY = Math.random() < 0.5 ? -1 : 1;
-        this.speedX = signX * (Math.random() * 2 + 0.2);
-        this.speedY = signY * (Math.random() * 2 + 0.2);
+        this.speedX = signX * (Math.random() * 2 + 0.4);
+        this.speedY = signY * (Math.random() * 2 + 0.4);
         this.color = `hsl(${Math.random() * 360}, 100%, 100%)`;
       }
 
@@ -114,7 +114,7 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
     window.addEventListener('resize', resizeCanvas);
     initParticles();
 
-    // Connect nearby particles with lines - optimized
+    // Connect nearby particles with lines
     function connectParticles() {
       if (!ctx) return;
 
