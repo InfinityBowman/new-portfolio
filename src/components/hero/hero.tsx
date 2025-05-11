@@ -1,9 +1,7 @@
 import { motion } from 'motion/react';
-import { Phrases } from './phrases';
-// import { Button } from '../button';
-import BackgroundCanvas from '../background-particles';
+import { Phrases } from './Phrases';
 
-export const Hero = () => {
+export default function Hero() {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (delay: number) => ({
@@ -18,8 +16,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative flex flex-col gap-8 items-center text-center py-20">
-      <BackgroundCanvas opacity={1} />
+    <section className="min-h-screen relative flex flex-col gap-8 justify-center items-center">
       <div className="sr-only">Jacob Maynard Portfolio Website</div>
       <motion.h2
         className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent"
@@ -29,20 +26,11 @@ export const Hero = () => {
       >
         Jacob Maynard
       </motion.h2>
-      <motion.p
-        className="text-xl sm:text-2xl lg:text-3xl opacity-80"
-        initial="hidden"
-        animate="visible"
-        variants={fadeUpVariants}
-        custom={0.4}
-      >
-        Software Engineer
-      </motion.p>
       <motion.div
         initial="hidden"
         animate="visible"
         variants={fadeUpVariants}
-        custom={0.6}
+        custom={0.4}
       >
         <Phrases />
       </motion.div>
@@ -50,16 +38,8 @@ export const Hero = () => {
         initial="hidden"
         animate="visible"
         variants={fadeUpVariants}
-        custom={0.8}
-      >
-        <a href="/about">
-          <button
-            className={`text-lg shadow-glow text-primary bg-background/80 hover:bg-secondary transition-colors py-1 px-3 rounded-lg`}
-          >
-            Learn More
-          </button>
-        </a>
-      </motion.div>
+        custom={0.6}
+      ></motion.div>
     </section>
   );
-};
+}

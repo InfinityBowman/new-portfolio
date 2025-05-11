@@ -1,9 +1,9 @@
 import { ReactNode, useState, useEffect } from 'react';
-import MobileMenuToggle from './mobile-menu-toggle';
+import NavMenuToggle from './NavMenuToggle';
 
 const NAVIGATION_LINKS = [
   { href: '/about', label: 'About Me' },
-  { href: '/hobbies', label: 'Hobbies' },
+  // { href: '/hobbies', label: 'Hobbies' },
 ];
 
 export default function NavBar() {
@@ -61,13 +61,6 @@ export default function NavBar() {
                 {label}
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Right side - Empty space to balance layout */}
-        <div className="w-1/4 flex justify-end">
-          <div className="md:hidden">
-            <MobileMenuToggle />
           </div>
         </div>
       </div>

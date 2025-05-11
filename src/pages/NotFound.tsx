@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BackgroundGrid from '@/components/background-grid';
+import BackgroundGrid from '@/src/components/BackgroundGrid';
 
 export default function NotFoundPage() {
   const [opacity, setOpacity] = useState(0);
@@ -19,11 +19,12 @@ export default function NotFoundPage() {
           <h1 className="text-8xl font-bold mb-2 text-white">404</h1>
           <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-white/90">Page Not Found</h2>
 
-          <p className="text-white/70 mb-8 text-lg">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
+          <p className="text-white/70 mb-8 text-lg">The page you're looking for doesn't exist or has been moved.</p>
 
-          <a href="/" className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-md hover:bg-white/20 transition-colors border border-white/20">
+          <a
+            href="/"
+            className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-md hover:bg-white/20 transition-colors border border-white/20"
+          >
             Return Home
           </a>
         </div>

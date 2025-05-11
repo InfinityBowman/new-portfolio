@@ -1,29 +1,20 @@
-import { useState } from 'react';
-import MobileMenu from './mobile-menu';
-import type { ReactNode } from 'react';
+interface NavMenuToggleProps {
+  onToggle: () => void;
+  isOpen: boolean;
+}
 
-export default function MobileMenuToggle() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setIsOpen((prevState) => !prevState);
-  };
-
-  const handleMenuClose = () => {
-    setIsOpen(false);
-  };
-
+export default function NavMenuToggle({ onToggle, isOpen }: NavMenuToggleProps) {
   return (
-    <>
+    <div className="fixed top-0 right-0 p-6 w-fit z-50">
       <button
-        onClick={handleMenuToggle}
-        className="inline-flex items-center justify-center p-2 rounded-md"
+        onClick={onToggle}
+        className="inline-flex items-center justify-center rounded-md"
         aria-expanded={isOpen}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         type="button"
       >
         <svg
-          className="h-6 w-6"
+          className="h-10 w-10"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -36,7 +27,7 @@ export default function MobileMenuToggle() {
               isOpen ? 'transform rotate-45 translate-y-[-0.02rem] translate-x-[0.55rem]' : ''
             }`}
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1"
             strokeLinecap="round"
           />
           <line
@@ -46,7 +37,7 @@ export default function MobileMenuToggle() {
             y2="12"
             className={`transition duration-300 ${isOpen ? 'translate-x-7 opacity-25' : ''}`}
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1"
             strokeLinecap="round"
           />
           <line
@@ -58,16 +49,11 @@ export default function MobileMenuToggle() {
               isOpen ? 'transform -rotate-45 translate-y-[0.51rem] -translate-x-[0.51rem]' : ''
             }`}
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1"
             strokeLinecap="round"
           />
         </svg>
       </button>
-      <MobileMenu
-        isOpen={isOpen}
-        onClose={handleMenuClose}
-      >
-      </MobileMenu>
-    </>
+    </div>
   );
 }

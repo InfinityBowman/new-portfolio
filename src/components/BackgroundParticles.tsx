@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-interface BackgroundCanvasProps {
+interface BackgroundParticlesProps {
   opacity?: number;
 }
 
-export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProps) {
+export default function BackgroundParticles({ opacity }: BackgroundParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -151,11 +151,12 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
               const dy = p1.y - p2.y;
               const distance = Math.sqrt(dx * dx + dy * dy);
 
-              if (distance < 80) {
+              const connectionDistance = 80;
+              if (distance < connectionDistance) {
                 ctx.beginPath();
                 ctx.strokeStyle = p1.color;
-                ctx.lineWidth = 0.5; // Slightly thicker for better visibility
-                ctx.globalAlpha = 1 - distance / 80; // Fade out with distance
+                ctx.lineWidth = 0.5;
+                ctx.globalAlpha = (1 - distance / connectionDistance) / 2; // Fade out with distance
                 ctx.moveTo(Math.round(p1.x), Math.round(p1.y));
                 ctx.lineTo(Math.round(p2.x), Math.round(p2.y));
                 ctx.stroke();
