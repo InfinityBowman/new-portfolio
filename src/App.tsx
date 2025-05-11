@@ -2,9 +2,17 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { LoadingSpinner } from '@/src/components/Spinner';
 import HomePage from '@/src/pages/Home';
 import NotFoundPage from '@/src/pages/NotFound';
+import NavMenuToggle from '@/src/components/nav/NavMenuToggle';
+import NavMenu from '@/src/components/nav/NavMenu';
+import Footer from '@/src/components/Footer';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -21,8 +29,19 @@ export default function App() {
   const isHomePage = currentPath === '/';
 
   return (
-    <main>
-      <Suspense fallback={<LoadingSpinner />}>{isHomePage ? <HomePage /> : <NotFoundPage />}</Suspense>
-    </main>
+    <>
+      <NavMenuToggle
+        onToggle={handleMenuToggle}
+        isOpen={isMenuOpen}
+      />
+      <NavMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
+      <main>
+        <Suspense fallback={<LoadingSpinner />}>{isHomePage ? <HomePage /> : <NotFoundPage />}</Suspense>
+      </main>
+      <Footer />
+    </>
   );
 }

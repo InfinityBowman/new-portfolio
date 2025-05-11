@@ -18,14 +18,14 @@ export default function Hero() {
   return (
     <section className="min-h-screen relative flex flex-col gap-8 justify-center items-center">
       <div className="sr-only">Jacob Maynard Portfolio Website</div>
-      <motion.h2
+      <motion.h1
         className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
         Jacob Maynard
-      </motion.h2>
+      </motion.h1>
       <motion.div
         initial="hidden"
         animate="visible"

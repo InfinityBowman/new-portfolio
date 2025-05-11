@@ -86,7 +86,7 @@ const CustomCursor = () => {
           width: isClicking ? `${smallerSize}px` : `${size}px`,
           height: isClicking ? `${smallerSize}px` : `${size}px`,
           borderRadius: '50%',
-          backgroundColor: 'hsl(var(--primary))',
+          backgroundColor: 'var(--primary)',
           transform: `translate(${position.x - (isClicking ? clickingOffset : normalOffset)}px, ${
             position.y - (isClicking ? clickingOffset : normalOffset)
           }px)`,

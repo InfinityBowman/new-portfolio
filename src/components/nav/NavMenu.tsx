@@ -43,7 +43,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
           <motion.div
             className="fixed top-0 right-0 h-screen w-80 sm:w-96
                     bg-secondary shadow-lg z-20 overflow-y-auto
-                    border-l border-primary flex flex-col"
+                    border-l border-accent flex flex-col"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -72,8 +72,8 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
                       className={`block px-4 py-3 rounded-lg text-lg font-medium transition-all duration-200
                         ${
                           pathname === item.href
-                            ? 'border border-primary text-primary'
-                            : 'text-secondary-foreground hover:text-primary hover:bg-background-hover'
+                            ? 'border border-accent text-primary hover:bg-background/70'
+                            : 'text-muted-foreground hover:text-primary hover:bg-background/70'
                         }`}
                       onClick={onClose}
                     >
@@ -86,7 +86,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
 
             {/* Footer section */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 p-6 border-t border-primary"
+              className="absolute bottom-0 left-0 right-0 p-6 border-t border-accent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}

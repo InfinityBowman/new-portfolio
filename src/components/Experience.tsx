@@ -1,5 +1,5 @@
 import SectionTitle from '@/src/components/SectionTitle';
-import { MY_STACK } from '@/lib/data';
+import { MY_EXPERIENCE } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -7,7 +7,7 @@ import React, { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function Skills() {
+export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -60,40 +60,22 @@ export default function Skills() {
       ref={containerRef}
       className=" min-h-screen"
     >
-      <SectionTitle title="My Stack" />
+      <SectionTitle title="My Experience" />
 
       <div className="space-y-20">
-        {Object.entries(MY_STACK).map(([key, value]) => (
+        {Object.entries(MY_EXPERIENCE).map(([key, value]) => (
           <div
-            className="grid sm:grid-cols-12"
+            className="flex rounded-lg border"
             key={key}
           >
-            <div className="sm:col-span-5">
-              <h3 className="slide-up text-5xl leading-none text-muted-foreground uppercase">{key}</h3>
-            </div>
-
-            <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
-              {value.map((item) => (
-                <div
-                  className="slide-up flex gap-3.5 items-center leading-none"
-                  key={item.name}
-                >
-                  <div>
-                    <img
-                      src={item.icon}
-                      // alt={item.name}
-                      width="40"
-                      height="40"
-                      className="max-h-10"
-                    />
-                  </div>
-                  <span className="text-2xl capitalize">{item.name}</span>
-                </div>
-              ))}
+            <div className="slide-up text-lg text-muted-foreground/80 space-y-2 [& p]:text-red">
+              <p>{value.company}</p>
+              <h3 className=" text-5xl leading-none text-muted-foreground uppercase">{value.title}</h3>
+              <p>{value.duration}</p>
             </div>
           </div>
         ))}
       </div>
     </section>
   );
-};
+}

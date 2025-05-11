@@ -1,20 +1,18 @@
-import React, { Suspense, lazy } from 'react';
-import { LoadingSpinner } from '@/src/components/Spinner';
-
-const AboutMe = lazy(() => import('@/src/components/about/AboutMe'));
-const Projects = lazy(() => import('@/src/components/about/Projects'));
+import React from 'react';
+import AboutMe from '@/src/components/about/AboutMe';
+import Projects from '@/src/components/about/Projects';
+import SectionTitle from '@/src/components/SectionTitle';
 
 export default function AboutPage() {
   return (
-    <>
-      <div className="flex flex-col items-center mx-4 mb-4 gap-2">
-        <Suspense fallback={<LoadingSpinner />}>
+    <section className="min-h-screen">
+      <div className="">
+        <SectionTitle title="My Experience" />
+        <div className="flex flex-col items-center mb-4 gap-2 ">
           <AboutMe />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
           <Projects />
-        </Suspense>
+        </div>
       </div>
-    </>
+    </section>
   );
 }
