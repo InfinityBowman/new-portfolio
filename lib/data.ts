@@ -98,11 +98,6 @@ export const MY_STACK = {
 };
 
 export const MY_EXPERIENCE = [
-  // {
-  //   company: 'Saint Louis University',
-  //   title: 'Masters in Software Engineering',
-  //   duration: 'Fall 2025 and Beyond',
-  // },
   {
     company: 'Applied Research Associates',
     title: 'Software Engineering Intern',
@@ -120,7 +115,73 @@ export const MY_EXPERIENCE = [
   },
   {
     company: 'University of Utah',
-    title: 'Membership Services Associate, Campus Recreation Services',
+    title: 'Membership Services Associate',
     duration: 'September 2022 - May 2024',
+  },
+];
+
+interface Project {
+  title: string;
+  description: string;
+  media: string;
+  refUrl: string;
+  source: string;
+  isVideo: boolean;
+}
+
+export const MY_PROJECTS: Project[] = [
+  {
+    title: 'BeThere Landing Page',
+    description:
+      'Landing page created for my senior capstone React Native mobile app project. Built with React, Emotion.js, and Motion/Framer Motion.',
+    media: '/projects/bethere-landing.png',
+    refUrl: 'https://github.com/InfinityBowman/bethere-landing',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'BeThere Photo Sharing App',
+    description:
+      'A real-time cross-platform photo sharing app built in React Native with Expo, Zustand, Auth0, Axios, and React Native Maps. It features a camera, photo feed, friends system, reporting, liking, content filtering, and more. It used a .NET web server hosted on AWS EC2 with photos stored in S3. This was my senior capstone project.',
+    media: '/projects/albums.mp4',
+    refUrl: 'https://bethere.jacobmaynard.dev',
+    source: 'Landing Page',
+    isVideo: true,
+  },
+  {
+    title: 'This Website',
+    description:
+      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript. Utilizes Axios for getting song info.',
+    media: '/projects/new-portfolio.png',
+    refUrl: 'https://github.com/InfinityBowman/new-portfolio',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'League Dashboard',
+    description:
+      'Dashboard of visualizations built purely with D3.js utilizing a Node.js server with Express and Axios to fetch live summoner data from the Riot API.',
+    media: '/projects/league-dashboard.jpg',
+    refUrl: 'https://github.com/InfinityBowman/LeagueOfLegendsDashboard',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'Markdown Notes App',
+    description:
+      'Notes app made in Electron + Vite with React and Typescript. Accesses filesystem to create and autosave notes. Supports markdown editing. Uses Jotai for state management and TailwindCSS, Tailwind Merge for styling.',
+    media: '/projects/notes-plus.jpg',
+    refUrl: 'https://github.com/InfinityBowman/notes-app',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'MoonBlight',
+    description:
+      "Video game made in Unity with C#. A 2D bullet hell conceptualized, designed, and created within 48 Hours for the University of Utah's March 2022 Game Jam. Worked with a large team of programmers, desginers, and artists to create a neat little game.",
+    media: '/projects/moon-blight.jpg',
+    refUrl: 'https://monkeybarrelgames.itch.io/moonblight',
+    source: 'Itch.io',
+    isVideo: false,
   },
 ];

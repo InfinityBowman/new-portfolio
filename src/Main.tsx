@@ -16,6 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       options={{
         lerp: 0.1,
         duration: 1.4,
+        smoothWheel: true,
+        orientation: 'vertical',
       }}
     >
       <App />

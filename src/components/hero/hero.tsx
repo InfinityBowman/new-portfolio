@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen relative flex flex-col gap-8 justify-center items-center">
+    <section id='hero' className="min-h-screen relative flex flex-col gap-8 justify-center items-center">
       <div className="sr-only">Jacob Maynard Portfolio Website</div>
       <motion.h1
         className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent"

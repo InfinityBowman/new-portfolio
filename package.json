@@ -10,19 +10,17 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@tailwindcss/vite": "^4.1.5",
     "axios": "^1.7.9",
     "gsap": "^3.13.0",
-    "lucide-react": "^0.468.0",
+    "lenis": "^1.1.16",
     "motion": "^11.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^5.4.0",
-    "tailwindcss": "^4.1.5",
-    "wavesurfer.js": "^7.8.15",
-    "lenis": "^1.1.16"
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.5",
+    "tailwindcss": "^4.1.5",
     "@types/node": "^22.15.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",

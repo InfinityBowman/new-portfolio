@@ -56,7 +56,7 @@ export default function Skills() {
 
   return (
     <section
-      id="my-stack"
+      id="skills"
       ref={containerRef}
       className=" min-h-screen"
     >

@@ -20,7 +20,7 @@ export default function Experience() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 80%',
-          end: 'bottom 80%',
+          end: 'bottom 100%',
           scrub: 0.5,
         },
       });
@@ -40,15 +40,17 @@ export default function Experience() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'bottom 50%',
-          end: 'bottom 10%',
-          scrub: 1,
+          start: 'top 0%',
+          end: 'bottom 0%',
+          scrub: 0.5,
         },
       });
 
-      tl.to(containerRef.current, {
-        y: -150,
+      tl.to('.slide-up', {
         opacity: 0,
+        y: -20,
+        ease: 'none',
+        stagger: 0.4,
       });
     },
     { scope: containerRef },
@@ -56,21 +58,21 @@ export default function Experience() {
 
   return (
     <section
-      id="my-stack"
+      id="experience"
       ref={containerRef}
       className=" min-h-screen"
     >
       <SectionTitle title="My Experience" />
 
-      <div className="space-y-20">
+      <div className="space-y-12">
         {Object.entries(MY_EXPERIENCE).map(([key, value]) => (
           <div
-            className="flex rounded-lg border"
+            className="flex slide-up p-4 border rounded-xl border-accent backdrop-blur-md"
             key={key}
           >
-            <div className="slide-up text-lg text-muted-foreground/80 space-y-2 [& p]:text-red">
+            <div className="text-md sm:text-lg text-muted-foreground/90 space-y-2">
               <p>{value.company}</p>
-              <h3 className=" text-5xl leading-none text-muted-foreground uppercase">{value.title}</h3>
+              <h3 className="md:text-5xl sm:text-4xl text-3xl leading-none text-muted-foreground">{value.title}</h3>
               <p>{value.duration}</p>
             </div>
           </div>
