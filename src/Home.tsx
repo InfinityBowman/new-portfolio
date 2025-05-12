@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '@/src/components/hero/Hero';
+import Hero from '@/src/components/Hero';
 import Skills from '@/src/components/Skills';
 import Experience from '@/src/components/Experience';
 import Projects from '@/src/components/Projects';

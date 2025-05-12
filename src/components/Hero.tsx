@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import Phrases from './Phrases';
+import Phrases from '@/src/components/Phrases';
 
 export default function Hero() {
   const fadeUpVariants = {
