@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Home from './Home';
-import NotFoundPage from './NotFound';
-import NavMenuToggle from './components/nav/NavMenuToggle';
-import NavMenu from './components/nav/NavMenu';
-import Footer from './components/Footer.tsx';
+import Home from '@/src/Home';
+import NotFoundPage from '@/src/NotFound';
+import NavMenuToggle from '@/src/components/nav/NavMenuToggle';
+import NavMenu from '@/src/components/nav/NavMenu';
+import Footer from '@/src/components/Footer';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
