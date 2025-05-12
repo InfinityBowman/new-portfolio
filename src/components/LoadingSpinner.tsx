@@ -1,6 +1,6 @@
 import { ImSpinner6 as LoadingIcon } from 'react-icons/im';
 
-export const LoadingSpinner = () => {
+export default function LoadingSpinner() {
   return (
     <div className="flex justify-center m-10">
       <LoadingIcon
@@ -9,4 +9,4 @@ export const LoadingSpinner = () => {
       />
     </div>
   );
-};
+}

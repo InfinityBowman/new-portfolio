@@ -1,5 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react';
-import { LoadingSpinner } from '@/src/components/Spinner';
+import React, { useState, useEffect } from 'react';
 import Home from '@/src/Home';
 import NotFoundPage from '@/src/NotFound';
 import NavMenuToggle from '@/src/components/nav/NavMenuToggle';
@@ -38,9 +37,7 @@ export default function App() {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
       />
-      <main >
-        <Suspense fallback={<LoadingSpinner />}>{isHomePage ? <Home /> : <NotFoundPage />}</Suspense>
-      </main>
+      <main>{isHomePage ? <Home /> : <NotFoundPage />}</main>
       <Footer />
     </>
   );
