@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export const Phrases = () => {
+export default function Phrases() {
   const phrases = ['Software Engineer', 'Web Developer', 'Frontend Developer', 'Web Performance'];
 
   // Each phrase is 4 seconds long

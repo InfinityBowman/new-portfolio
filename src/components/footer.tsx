@@ -1,7 +1,7 @@
 import { FaGithub, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import React from 'react';
 
-const Footer = () => {
+export default function Footer() {
   const socialLinks = [
     {
       href: 'https://github.com/InfinityBowman',
@@ -44,6 +44,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
