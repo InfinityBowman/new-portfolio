@@ -81,8 +81,8 @@ export default function Projects() {
                 target="_blank"
                 className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
               >
-                  <span>{project.source}</span>
-                  <FaExternalLinkAlt />
+                <span>{project.source}</span>
+                <FaExternalLinkAlt />
               </a>
             </div>
             {project.isVideo ? (
