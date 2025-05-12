@@ -3,7 +3,7 @@ import Home from './Home';
 import NotFoundPage from './NotFound';
 import NavMenuToggle from './components/nav/NavMenuToggle';
 import NavMenu from './components/nav/NavMenu';
-import Footer from './components/Footer';
+import Footer from './components/Footer.tsx';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
