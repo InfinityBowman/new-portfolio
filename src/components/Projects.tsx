@@ -88,7 +88,7 @@ export default function Projects() {
             {project.isVideo ? (
               <div className="flex flex-1 justify-center">
                 <video
-                  className="rounded-lg border border-white/30 md:max-w-lg sm:max-w-sm max-w-xs h-auto max-h-[400px] object-contain bg-black/20"
+                  className="rounded-lg border border-white/30 md:max-w-lg sm:max-w-sm h-auto max-h-[400px] object-contain bg-black/20"
                   src={project.media}
                   autoPlay
                   loop
@@ -100,7 +100,7 @@ export default function Projects() {
             ) : (
               <div className="m-auto">
                 <img
-                  className="rounded-lg border border-white/30 md:max-w-lg sm:max-w-sm max-w-xs h-auto max-h-[400px] object-contain bg-black/20"
+                  className="rounded-lg border border-white/30 lg:max-w-lg md:max-w-md sm:max-w-xs h-auto max-h-[400px] object-contain bg-black/20"
                   src={project.media}
                   alt={project.title + ' image'}
                 />

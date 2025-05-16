@@ -37,7 +37,7 @@ export default function App() {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
       />
-      <main>{isHomePage ? <Home /> : <NotFoundPage />}</main>
+      <main className="relative z-10">{isHomePage ? <Home /> : <NotFoundPage />}</main>
       <Footer />
     </>
   );

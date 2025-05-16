@@ -6,7 +6,7 @@ import Projects from '@/src/components/Projects';
 
 export default function Home() {
   return (
-    <div className="space-y-20 mx-8 mr-16">
+    <div className="space-y-20 mx-8 sm:mr-16">
       <Hero />
       <Skills />
       <Experience />

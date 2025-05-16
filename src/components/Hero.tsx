@@ -22,7 +22,7 @@ export default function Hero() {
     >
       <div className="sr-only">Jacob Maynard Portfolio Website</div>
       <motion.h1
-        className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent p-1"
+        className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent p-1 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}

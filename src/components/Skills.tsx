@@ -65,29 +65,27 @@ export default function Skills() {
       <div className="space-y-20">
         {Object.entries(MY_STACK).map(([key, value]) => (
           <div
-            className="grid sm:grid-cols-12"
+            className="grid md:grid-cols-12"
             key={key}
           >
             <div className="sm:col-span-5">
-              <h3 className="slide-up text-5xl leading-none text-muted-foreground uppercase">{key}</h3>
+              <h3 className="slide-up text-5xl leading-none text-muted-foreground uppercase mb-4">{key}</h3>
             </div>
 
             <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
               {value.map((item) => (
                 <div
-                  className="slide-up flex gap-3.5 items-center leading-none"
+                  className="slide-up flex gap-2 sm:gap-3.5 items-center leading-none"
                   key={item.name}
                 >
-                  <div>
+                  <div className="w-8 h-8 sm:w-10 sm:h-10">
                     <img
                       src={item.icon}
-                      // alt={item.name}
-                      width="40"
-                      height="40"
-                      className="max-h-10"
+                      alt={item.name + ' icon'}
+                      className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-2xl capitalize">{item.name}</span>
+                  <span className="text-xl sm:text-2xl capitalize">{item.name}</span>
                 </div>
               ))}
             </div>
@@ -96,4 +94,4 @@ export default function Skills() {
       </div>
     </section>
   );
-};
+}

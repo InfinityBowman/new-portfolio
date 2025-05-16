@@ -121,7 +121,7 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1,
+        zIndex: 1,
         opacity: opacity,
         pointerEvents: 'none',
       }}

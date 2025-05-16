@@ -218,7 +218,7 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1,
+        zIndex: 1,
         opacity: opacity,
         background: 'transparent',
         pointerEvents: 'none',
