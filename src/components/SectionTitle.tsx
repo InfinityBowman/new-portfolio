@@ -7,7 +7,7 @@ interface Props {
 
 const SectionTitle = ({ title }: Props) => {
   return (
-    <div className={'flex items-center gap-4 mb-10'}>
+    <div className={'flex items-center gap-4 mb-8'}>
       <SectionDecorator
         width={25}
         className={'animate-spin duration-7000'}

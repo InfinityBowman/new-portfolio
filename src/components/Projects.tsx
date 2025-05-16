@@ -21,15 +21,15 @@ export default function Projects() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 100%',
-          end: 'bottom 110%',
+          end: 'bottom 95%',
           scrub: 0.5,
         },
       });
 
       tl.from('.slide-up', {
         opacity: 0,
-        y: 50,
-        ease: 'none',
+        y: 60,
+        ease: 'power1.inOut',
         stagger: 0.4,
       });
     },
@@ -42,15 +42,15 @@ export default function Projects() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 0%',
-          end: 'bottom 0%',
+          end: 'bottom 5%',
           scrub: 0.5,
         },
       });
 
       tl.to('.slide-up', {
         opacity: 0,
-        y: -30,
-        ease: 'none',
+        y: -50,
+        ease: 'power1.inOut',
         stagger: 0.4,
       });
     },
