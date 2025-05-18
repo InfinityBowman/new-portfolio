@@ -59,16 +59,16 @@ export const MY_STACK = {
   ],
   backend: [
     {
+      name: '.Net',
+      icon: '/logo/dotnet.svg',
+    },
+    {
       name: 'Node.js',
       icon: '/logo/node.png',
     },
     {
       name: 'Express.js',
       icon: '/logo/express.png',
-    },
-    {
-      name: '.Net',
-      icon: '/logo/dotnet.svg',
     },
   ],
   database: [

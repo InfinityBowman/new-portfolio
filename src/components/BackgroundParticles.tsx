@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 interface BackgroundParticlesProps {
-  opacity?: number;
+  opacity: number;
 }
 
 export default function BackgroundParticles({ opacity }: BackgroundParticlesProps) {
@@ -15,13 +15,14 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
     if (!ctx) return;
 
     const particles: Particle[] = [];
+
+    // Track device pixel ratio for high-DPI screens
     let pixelRatio = window.devicePixelRatio || 1;
 
-    // Resize handler with DPI scaling
     function resizeCanvas() {
       if (canvas) {
         const rect = canvas.getBoundingClientRect();
-        // Set the canvas size considering device pixel ratio
+        // Set canvas dimensions with DPI scaling
         canvas.width = rect.width * pixelRatio;
         canvas.height = rect.height * pixelRatio;
         // Scale all drawing operations
@@ -32,7 +33,6 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
       }
     }
 
-    // Particle class
     class Particle {
       x: number;
       y: number;
@@ -47,7 +47,7 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
 
         this.x = Math.round(Math.random() * displayWidth);
         this.y = Math.round(Math.random() * displayHeight);
-        this.size = Math.max(1.5, Math.round(Math.random() * 3 + 0.5)); // Integer sizes
+        this.size = Math.max(1.5, Math.round(Math.random() * 3 + 0.5));
 
         const signX = Math.random() < 0.5 ? -1 : 1;
         const signY = Math.random() < 0.5 ? -1 : 1;

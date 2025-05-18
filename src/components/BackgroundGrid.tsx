@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 interface BackgroundCanvasProps {
-  opacity?: number;
+  opacity: number;
 }
 
-export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProps) {
+export default function BackgroundCanvas({ opacity }: BackgroundCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -45,11 +45,12 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
 
       ctx.clearRect(0, 0, displayWidth, displayHeight);
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-      ctx.lineWidth = 1; // Kept at 1 for clean lines
+      ctx.lineWidth = 1;
 
       // Calculate grid dimensions with extra padding to ensure no visible edges
-      // Add extra columns and rows on each side to make it appear endless
-      const padding = Math.ceil(waveAmplitude / gridSpacing) + 2; // Extra cells for wave movement
+      // Adds extra columns and rows on each side to make it appear endless
+      // And some extra cells for wave movement
+      const padding = Math.ceil(waveAmplitude / gridSpacing) + 2;
       const cols = Math.ceil(displayWidth / gridSpacing) + padding * 2;
       const rows = Math.ceil(displayHeight / gridSpacing) + padding * 2;
 
@@ -84,7 +85,9 @@ export default function BackgroundCanvas({ opacity = 0.2 }: BackgroundCanvasProp
           // Wave effect follows horizontal lines
           const distanceFromLeft = (startX + x * gridSpacing) / (cols * gridSpacing);
           const offset = Math.sin(time - distanceFromLeft * 4) * waveAmplitude;
-          const xPos = Math.round(startX + x * gridSpacing + Math.sin(time - (yPos / displayHeight) * 2) * (waveAmplitude / 2)); // Round for pixel alignment
+          const xPos = Math.round(
+            startX + x * gridSpacing + Math.sin(time - (yPos / displayHeight) * 2) * (waveAmplitude / 2),
+          ); // Round for pixel alignment again
 
           if (y === 0) {
             ctx.moveTo(xPos, Math.round(yPos + offset));
