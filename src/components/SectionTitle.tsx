@@ -14,7 +14,7 @@ const SectionTitle = ({ title }: Props) => {
         title={title}
       />
 
-      <h2 className={'text-xl uppercase leading-none'}>{title}</h2>
+      <h2 className={'text-xl leading-none'}>{title}</h2>
     </div>
   );
 };

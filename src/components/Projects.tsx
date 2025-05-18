@@ -71,7 +71,7 @@ export default function Projects() {
             className="flex slide-up flex-col sm:flex-row p-4 border justify-between rounded-xl border-accent backdrop-blur-xs bg-background/60 gap-4"
             key={key}
           >
-            <div className="text-sm sm:text-md text-muted-foreground/95 space-y-4">
+            <div className="text-sm sm:text-md text-muted-foreground/95 space-y-4 space-x-2">
               <h3 className="md:text-3xl sm:text-2xl text-1xl leading-none text-muted-foreground">{project.title}</h3>
               <hr className="relative bottom-1 w-10 h-0.5 bg-muted border-0 my-2" />
               <p className="max-w-[60ch] mb-6">{project.description}</p>
@@ -84,6 +84,16 @@ export default function Projects() {
                 <span>{project.source}</span>
                 <FaExternalLinkAlt />
               </a>
+              {project.link ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
+                >
+                  <span>Website</span>
+                  <FaExternalLinkAlt />
+                </a>
+              ) : null}
             </div>
             {project.isVideo ? (
               <div className="flex flex-1 justify-center">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaYoutube, FaLinkedin } from 'react-icons/fa';
+import SOCIAL_LINKS from '@/src/lib/socials';
 
 interface NavMenuProps {
   isOpen: boolean;
@@ -39,6 +39,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
 
   const menuItems = [
     { href: '#hero', label: 'Home', id: 'hero' },
+    { href: '#about', label: 'About', id: 'about' },
     { href: '#skills', label: 'Skills', id: 'skills' },
     { href: '#experience', label: 'Experience', id: 'experience' },
     { href: '#projects', label: 'Projects', id: 'projects' },
@@ -116,26 +117,24 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
 
             {/* Footer section */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 p-6 border-t border-accent"
+              className="absolute bottom-0 left-0 right-0 py-3 border-t border-accent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <div className="flex justify-center space-x-4">
-                <a
-                  href="https://github.com/InfinityBowman"
-                  className="text-primary/70 hover:text-primary transition-colors"
-                  target="_blank"
-                >
-                  <FaGithub size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  className="text-primary/70 hover:text-primary transition-colors"
-                  target="_blank"
-                >
-                  <FaLinkedin size={20} />
-                </a>
+              <div className="flex justify-center gap-4">
+                {SOCIAL_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={link.className}
+                    aria-label={link.label}
+                  >
+                    {link.icon}
+                  </a>
+                ))}
               </div>
             </motion.div>
           </motion.div>
