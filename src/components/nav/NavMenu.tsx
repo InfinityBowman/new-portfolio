@@ -13,7 +13,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuItems.map((item) => item.label);
+      const sections = menuItems.map((item) => item.id);
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {

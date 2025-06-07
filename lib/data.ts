@@ -153,7 +153,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'This Website',
     description:
-      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript. Utilizes Axios for getting song info.',
+      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript.',
     media: '/projects/new-portfolio.png',
     refUrl: 'https://github.com/InfinityBowman/new-portfolio',
     source: 'Github',

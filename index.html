@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Ensure proper playback on iOS -->
+    <meta name="format-detection" content="telephone=no" />
 
-<head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <meta name="mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
- <!-- Ensure proper playback on iOS -->
- <meta name="format-detection" content="telephone=no">
+    <title>Portfolio</title>
+    <meta name="description" content="My Portfolio" />
+    <link rel="icon" href="/favicon.ico" />
 
- <title>Portfolio</title>
- <meta name="description" content="idle-game" />
- <link rel="icon" href="/favicon.ico" />
+    <style>
+      * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
 
- <style>
-  * {
-   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-   -webkit-font-smoothing: antialiased;
-  }
+      html,
+      body {
+        background-color: oklch(0.28 0.0559 282.1);
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
 
-  html,
-  body {
-   background-color: oklch(0.28 0.0559 282.1);
-   scroll-behavior: smooth;
-   margin: 0;
-   padding: 0;
-  }
- </style>
-</head>
-
-<body>
- <div id="root"></div>
- <script type="module" src="/src/Main.tsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/Main.tsx"></script>
+  </body>
 </html>
