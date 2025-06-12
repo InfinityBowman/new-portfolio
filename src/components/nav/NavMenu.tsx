@@ -66,14 +66,14 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 z-10"
+            className="fixed inset-0 z-40"
             onClick={onClose}
           />
 
           {/* Menu panel */}
           <motion.div
             className="fixed top-0 right-0 h-screen w-80 sm:w-96
-                    bg-secondary shadow-lg z-20 overflow-y-auto
+                    bg-secondary shadow-lg z-41 overflow-y-auto
                     border-l border-accent flex flex-col"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -100,11 +100,11 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
                   >
                     <a
                       href={item.href}
-                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-all duration-200
+                      className={`block px-4 py-3 rounded-lg text-lg font-medium transition-all duration-400
                         ${
                           activeSection === item.id
-                            ? 'border border-accent text-primary hover:bg-background/70'
-                            : 'text-muted-foreground hover:text-primary hover:bg-background/70'
+                            ? 'border-accent border-[1px] text-primary hover:bg-background/70'
+                            : 'border-[1px] border-transparent text-muted-foreground hover:text-primary hover:bg-background/70'
                         }`}
                       onClick={(e) => handleAnchorClick(e, item.href)}
                     >
