@@ -2,19 +2,19 @@ export const MY_STACK = {
   frontend: [
     {
       name: 'Javascript',
-      icon: '/logo/js.png',
+      icon: '/logo/js.svg',
     },
     {
       name: 'Typescript',
-      icon: '/logo/ts.png',
+      icon: '/logo/ts.svg',
     },
     {
       name: 'React',
-      icon: '/logo/react.png',
+      icon: '/logo/react.svg',
     },
     {
       name: 'Next.js',
-      icon: '/logo/next.png',
+      icon: '/logo/next.svg',
     },
     {
       name: 'Zustand',
@@ -22,7 +22,7 @@ export const MY_STACK = {
     },
     {
       name: 'Tailwind CSS',
-      icon: '/logo/tailwind.png',
+      icon: '/logo/tailwind.svg',
     },
     {
       name: 'Emotion CSS',
@@ -30,7 +30,7 @@ export const MY_STACK = {
     },
     {
       name: 'GSAP',
-      icon: '/logo/gsap.png',
+      icon: '/logo/gsap.svg',
     },
     {
       name: 'Framer Motion',
@@ -41,12 +41,8 @@ export const MY_STACK = {
       icon: '/logo/motion.png',
     },
     {
-      name: 'Vite',
-      icon: '/logo/vite.svg',
-    },
-    {
       name: 'React Native',
-      icon: '/logo/react-native.svg',
+      icon: '/logo/react.svg',
     },
     {
       name: 'D3',
@@ -63,8 +59,12 @@ export const MY_STACK = {
       icon: '/logo/dotnet.svg',
     },
     {
+      name: 'Deno.js',
+      icon: '/logo/deno.svg',
+    },
+    {
       name: 'Node.js',
-      icon: '/logo/node.png',
+      icon: '/logo/node.svg',
     },
     {
       name: 'Express.js',
@@ -85,6 +85,10 @@ export const MY_STACK = {
     {
       name: 'Git',
       icon: '/logo/git.png',
+    },
+    {
+      name: 'Vite',
+      icon: '/logo/vite.svg',
     },
     {
       name: 'Docker',
@@ -152,8 +156,7 @@ export const MY_PROJECTS: Project[] = [
   },
   {
     title: 'This Website',
-    description:
-      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript.',
+    description: 'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript.',
     media: '/projects/new-portfolio.png',
     refUrl: 'https://github.com/InfinityBowman/new-portfolio',
     source: 'Github',

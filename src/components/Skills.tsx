@@ -60,7 +60,7 @@ export default function Skills() {
       ref={containerRef}
       className=" min-h-screen"
     >
-      <SectionTitle title="My Stack" />
+      <SectionTitle title="My Stack"/>
 
       <div className="space-y-20">
         {Object.entries(MY_STACK).map(([key, value]) => (
@@ -78,14 +78,14 @@ export default function Skills() {
                   className="slide-up flex gap-2 sm:gap-3.5 items-center leading-none"
                   key={item.name}
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
                     <img
                       src={item.icon}
                       alt={item.name + ' icon'}
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-xl sm:text-2xl capitalize">{item.name}</span>
+                  <span className="text-xl sm:text-2xl">{item.name}</span>
                 </div>
               ))}
             </div>
