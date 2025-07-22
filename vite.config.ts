@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
+import preact from '@preact/preset-vite';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), preact()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),

@@ -138,7 +138,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'BeThere Landing Page',
     description:
-      'Landing page created for my senior capstone React Native mobile app project. Built with React, Emotion.js, and Motion/Framer Motion.',
+      'Landing page created for my senior capstone React Native mobile app project. Built with React, Emotion.js, and Motion/Framer Motion. I wanted to see what the CSS in JS was about, and I think I still prefer Tailwind especially with v4.',
     media: '/projects/bethere-landing.png',
     link: 'https://bethere.jacobmaynard.dev',
     refUrl: 'https://github.com/InfinityBowman/bethere-landing',
@@ -156,7 +156,8 @@ export const MY_PROJECTS: Project[] = [
   },
   {
     title: 'This Website',
-    description: 'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis, Vite, and TypeScript.',
+    description:
+      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis (smooth scrolling), Vite, and TypeScript.',
     media: '/projects/new-portfolio.png',
     refUrl: 'https://github.com/InfinityBowman/new-portfolio',
     source: 'Github',
@@ -165,7 +166,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'League Dashboard',
     description:
-      'Dashboard of visualizations built purely with D3.js utilizing a Node.js server with Express and Axios to fetch live summoner data from the Riot API.',
+      'Dashboard of visualizations built purely with D3.js utilizing a Node.js server with Express and Axios to fetch live summoner data from the Riot API. This was my first experience with D3 and I’ve continued using it and improving at it.',
     media: '/projects/league-dashboard.jpg',
     refUrl: 'https://github.com/InfinityBowman/LeagueOfLegendsDashboard',
     source: 'Github',
@@ -174,7 +175,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'Markdown Notes App',
     description:
-      'Notes app made in Electron + Vite with React and Typescript. Accesses filesystem to create and autosave notes. Supports markdown editing. Uses Jotai for state management and TailwindCSS, Tailwind Merge for styling.',
+      'Notes app made in Electron + Vite with React and Typescript. Accesses filesystem to create and autosave notes. Supports markdown editing. Uses Jotai for state management and TailwindCSS, Tailwind Merge for styling. This was my first time trying out Electron. It’s pretty cool but I definitely also want to try out Tauri.',
     media: '/projects/notes-plus.jpg',
     refUrl: 'https://github.com/InfinityBowman/notes-app',
     source: 'Github',
@@ -194,5 +195,5 @@ export const MY_PROJECTS: Project[] = [
 export const ABOUT = {
   title: "Hi, I'm Jacob",
   description:
-    "I’m passionate about building great applications that bring value to people. I enjoy learning all I can as a student and software developer, and love applying my acquired knowledge in the real world. I’m driven to figure out how things work on a foundational level, and often find myself engrossed in the details. Starting Fall 2025, I'll be pursuing a Masters in Computer Science at Saint Louis University. After that my goal is to pursue a career as a software developer and apply my skills in Javascript and C# to build powerful applications.",
+    "I’m passionate about building awesome applications that bring value to people. I enjoy learning all I can as a student and software developer, and love learning new things and applying that knowledge in the real world. I’m driven to figure out how things work and often find myself engrossed in the details. Starting Fall 2025, I'll be pursuing a Masters in Computer Science at Saint Louis University. After that my goal is to pursue a career as a software developer and apply my skills in JavaScript and C# to build powerful and performant applications.",
 };

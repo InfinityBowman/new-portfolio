@@ -5,27 +5,23 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "ls -la src/components && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "axios": "^1.7.9",
     "gsap": "^3.13.0",
     "lenis": "^1.1.16",
     "motion": "^11.18.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "preact": "^10.26.9",
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.5",
-    "tailwindcss": "^4.1.5",
     "@types/node": "^22.15.3",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@vitejs/plugin-react": "^4.4.1",
-    "vite": "^6.3.3",
-    "typescript": "5.7.2"
+    "@preact/preset-vite": "^2.10.2",
+    "tailwindcss": "^4.1.5",
+    "typescript": "5.7.2",
+    "vite": "^6.3.3"
   }
 }
