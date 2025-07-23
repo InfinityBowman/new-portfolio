@@ -110,7 +110,7 @@ export const MY_EXPERIENCE = [
   {
     company: 'University of Utah',
     title: 'Audio Manager, Student Media',
-    duration: 'September 2025 - May 2025',
+    duration: 'September 2024 - May 2025',
   },
   {
     company: 'Applied Research Associates',
