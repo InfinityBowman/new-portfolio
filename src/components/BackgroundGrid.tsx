@@ -18,13 +18,12 @@ export default function BackgroundCanvas({ opacity }: BackgroundCanvasProps) {
     const pixelRatio = window.devicePixelRatio || 1;
 
     function resizeCanvas() {
-      if (canvas) {
+      if (canvas && ctx) {
         const rect = canvas.getBoundingClientRect();
-        // Set canvas dimensions with DPI scaling
         canvas.width = rect.width * pixelRatio;
         canvas.height = rect.height * pixelRatio;
-        // Scale all drawing operations
-        ctx!.scale(pixelRatio, pixelRatio);
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+        ctx.scale(pixelRatio, pixelRatio); // Apply scaling
       }
     }
 
@@ -85,9 +84,7 @@ export default function BackgroundCanvas({ opacity }: BackgroundCanvasProps) {
           // Wave effect follows horizontal lines
           const distanceFromLeft = (startX + x * gridSpacing) / (cols * gridSpacing);
           const offset = Math.sin(time - distanceFromLeft * 4) * waveAmplitude;
-          const xPos = Math.round(
-            startX + x * gridSpacing + Math.sin(time - (yPos / displayHeight) * 2) * (waveAmplitude / 2),
-          ); // Round for pixel alignment again
+          const xPos = Math.round(startX + x * gridSpacing + Math.sin(time - (yPos / displayHeight) * 2) * (waveAmplitude / 2)); // Round for pixel alignment again
 
           if (y === 0) {
             ctx.moveTo(xPos, Math.round(yPos + offset));

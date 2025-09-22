@@ -20,16 +20,25 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
     let pixelRatio = window.devicePixelRatio || 1;
 
     function resizeCanvas() {
-      if (canvas) {
+      if (canvas && ctx) {
         const rect = canvas.getBoundingClientRect();
+        const oldWidth = canvas.width / pixelRatio;
+        const oldHeight = canvas.height / pixelRatio;
+
         // Set canvas dimensions with DPI scaling
         canvas.width = rect.width * pixelRatio;
         canvas.height = rect.height * pixelRatio;
-        // Scale all drawing operations
-        ctx!.scale(pixelRatio, pixelRatio);
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform before scaling
+        ctx.scale(pixelRatio, pixelRatio);
 
-        // Reinitialize particles when resizing
-        initParticles();
+        const newWidth = canvas.width / pixelRatio;
+        const newHeight = canvas.height / pixelRatio;
+
+        // Adjust particle positions proportionally
+        particles.forEach((p) => {
+          p.x = (p.x / oldWidth) * newWidth;
+          p.y = (p.y / oldHeight) * newHeight;
+        });
       }
     }
 
@@ -53,6 +62,15 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
         const signY = Math.random() < 0.5 ? -1 : 1;
         this.speedX = signX * (Math.random() * 2 + 0.4);
         this.speedY = signY * (Math.random() * 2 + 0.4);
+
+        // Ensure speedX and speedY are not both zero
+        do {
+          const signX = Math.random() < 0.5 ? -1 : 1;
+          const signY = Math.random() < 0.5 ? -1 : 1;
+          this.speedX = signX * (Math.random() * 2 + 0.4);
+          this.speedY = signY * (Math.random() * 2 + 0.4);
+        } while (this.speedX === 0 && this.speedY === 0);
+
         this.color = `hsl(${Math.random() * 360}, 100%, 100%)`;
       }
 
@@ -172,7 +190,7 @@ export default function BackgroundParticles({ opacity }: BackgroundParticlesProp
 
     // Use requestAnimationFrame with throttling
     let lastTime = 0;
-    const fps = 30; // Target 30 FPS instead of 60
+    const fps = 60;
     const frameInterval = 1000 / fps;
 
     function animate(timestamp: number) {

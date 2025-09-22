@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* Theme colors */
@@ -9,9 +9,9 @@
   --primary: oklch(0.99 0.0017 247.84);
   --primary-foreground: oklch(0.3 0.05 264);
   --secondary: oklch(0.3 0.0629 281.93);
-  --secondary-foreground: oklch(0.90 0.0125 247.97);
+  --secondary-foreground: oklch(0.9 0.0125 247.97);
   --muted: oklch(0.44 0.0986 289.35);
-  --muted-hover: oklch(0.47 0.10 289);
+  --muted-hover: oklch(0.47 0.1 289);
   --muted-foreground: oklch(0.85 0.0167 261.49);
   --accent: oklch(0.36 0.0777 289.59);
 
@@ -19,9 +19,9 @@
   --link-hover: hsla(311, 71%, 63%, 90%);
   --glow: 0 0 10px rgba(243, 103, 175, 0.5), 0 0 4px rgba(243, 103, 175, 0.3);
   --gradient-text: linear-gradient(to right, #f8923e, #f367af);
- }
+}
 
- @theme {
+@theme {
   /* Theme colors */
   --color-background: var(--background);
   --color-background-hover: var(--background-hover);
@@ -38,33 +38,45 @@
 }
 
 @layer base {
-  html, body {
+  html,
+  body {
     background-color: var(--background);
     color: var(--foreground);
     overflow-y: auto;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-  font-family: 'Anton', system-ui, sans-serif;
-  letter-spacing: 0.02em;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Anton', system-ui, sans-serif;
+    letter-spacing: 0.02em;
+  }
 
   /* Hide scrollbars */
   * {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-    cursor: none !important;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   /* Chrome, Safari, newer Edge */
   *::-webkit-scrollbar {
     display: none;
   }
+
+  /* Custom cursor on large screens only */
+  @media (min-width: 769px) {
+    * {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
-   .font-anton {
+  .font-anton {
     font-family: 'Anton', system-ui, sans-serif;
     letter-spacing: 0.02em;
   }
@@ -82,13 +94,13 @@
   }
 
   .gradient-text {
-   background: var(--gradient-text);
-   background-size: 400% 400%;
-   -webkit-background-clip: text;
-   background-clip: text;
-   color: transparent;
-   text-fill-color: transparent;
-   -webkit-text-fill-color: transparent;
+    background: var(--gradient-text);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 }
 
