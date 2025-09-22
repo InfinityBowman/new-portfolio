@@ -8,6 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
