@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
+// Don't show custom cursor on mobile devices
 const MOBILE_BREAKPOINT = 768;
 
 const CustomCursor = () => {

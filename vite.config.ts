@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import preact from '@preact/preset-vite';
 import path from 'path';
+import { plugin as mdPlugin, Mode } from 'vite-plugin-markdown';
 
 export default defineConfig({
-  plugins: [tailwindcss(), preact()],
+  plugins: [tailwindcss(), preact(), mdPlugin({ mode: [Mode.HTML] })],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),

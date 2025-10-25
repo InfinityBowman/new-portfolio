@@ -1,6 +1,6 @@
 import SectionTitle from '@/src/components/SectionTitle';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import { MY_PROJECTS } from '@/lib/data';
+import { MY_PROJECTS } from '@/src/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -58,11 +58,7 @@ export default function Projects() {
   );
 
   return (
-    <section
-      id="projects"
-      ref={containerRef}
-      className="min-h-screen mb-10"
-    >
+    <section id="projects" ref={containerRef} className="min-h-screen mb-10">
       <SectionTitle title="My Projects" />
 
       <div className="space-y-8">

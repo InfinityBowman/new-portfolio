@@ -1,6 +1,7 @@
 # Jacob Maynard – [Personal Portfolio](https://jacobmaynard.dev)
 
 Welcome! This is the source code for my personal portfolio site, built to showcase my projects, skills, and experience as a software developer.
+Why did I do my own routing? I don't know, it's pretty simple so it works.
 
 ## Getting Started
 

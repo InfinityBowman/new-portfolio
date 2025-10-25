@@ -8,7 +8,7 @@ interface NavMenuProps {
 }
 
 export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState(window.location.pathname.startsWith('/blog') ? 'blog' : 'hero');
 
   // Update active section based on scroll position
   useEffect(() => {
@@ -38,37 +38,54 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
   }, []);
 
   const menuItems = [
-    { href: '#hero', label: 'Home', id: 'hero' },
-    { href: '#about', label: 'About', id: 'about' },
-    { href: '#skills', label: 'Skills', id: 'skills' },
-    { href: '#experience', label: 'Experience', id: 'experience' },
-    { href: '#projects', label: 'Projects', id: 'projects' },
+    { href: '/#hero', label: 'Home', id: 'hero' },
+    { href: '/#about', label: 'About', id: 'about' },
+    { href: '/#skills', label: 'Skills', id: 'skills' },
+    { href: '/#experience', label: 'Experience', id: 'experience' },
+    { href: '/#projects', label: 'Projects', id: 'projects' },
+    { href: '/blog', label: 'Blog', id: 'blog' },
   ];
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    const targetId = href.substring(1);
+    if (href.startsWith('/blog')) {
+      window.history.pushState({}, '', '/blog');
+      window.dispatchEvent(new Event('pushstate'));
+      setActiveSection('blog');
+      onClose();
+      return;
+    }
+
+    const targetId = href.substring(2);
     const targetElement = document.getElementById(targetId);
 
-    if (targetElement) {
+    if (window.location.pathname !== '/') {
+      // Navigate to home, then scroll after navigation
+      window.history.pushState({}, '', '/');
+      window.dispatchEvent(new Event('pushstate'));
+      // Wait for the page to update, then scroll
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    } else if (targetElement) {
       window.scrollTo({
         top: targetElement.offsetTop,
         behavior: 'smooth',
       });
-
-      onClose();
     }
+
+    onClose();
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div
-            className="fixed inset-0 z-40"
-            onClick={onClose}
-          />
+          <motion.div className="fixed inset-0 z-40" onClick={onClose} />
 
           {/* Menu panel */}
           <motion.div

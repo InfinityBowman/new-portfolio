@@ -1,5 +1,5 @@
 import SectionTitle from '@/src/components/SectionTitle';
-import { ABOUT } from '@/lib/data';
+import { ABOUT } from '@/src/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -74,11 +74,7 @@ export default function About() {
   );
 
   return (
-    <section
-      id="about"
-      ref={containerRef}
-      className="min-h-screen"
-    >
+    <section id="about" ref={containerRef} className="min-h-screen">
       <SectionTitle title="whoami" />
 
       <div className="sm:space-y-10 space-y-6">
@@ -104,6 +100,18 @@ export default function About() {
               {link.icon}
             </a>
           ))}
+          <a
+            href="/blog"
+            className={` group flex items-center gap-2 border border-muted p-1.5 px-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary pop-in`}
+            aria-label="Blog"
+            onClick={(e) => {
+              e.preventDefault();
+              window.history.pushState({}, '', '/blog');
+              window.dispatchEvent(new Event('pushstate'));
+            }}
+          >
+            <span className="text-secondary-foreground group-hover:text-primary transition-colors">My Blog</span>
+          </a>
         </div>
       </div>
     </section>

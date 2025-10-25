@@ -1,5 +1,5 @@
 import SectionTitle from '@/src/components/SectionTitle';
-import { MY_EXPERIENCE } from '@/lib/data';
+import { MY_EXPERIENCE } from '@/src/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -57,19 +57,12 @@ export default function Experience() {
   );
 
   return (
-    <section
-      id="experience"
-      ref={containerRef}
-      className=" min-h-screen"
-    >
+    <section id="experience" ref={containerRef} className=" min-h-screen">
       <SectionTitle title="My Experience" />
 
       <div className="space-y-12">
         {Object.entries(MY_EXPERIENCE).map(([key, value]) => (
-          <div
-            className="flex slide-up p-4 border rounded-xl border-accent backdrop-blur-md"
-            key={key}
-          >
+          <div className="flex slide-up p-4 border rounded-xl border-accent backdrop-blur-md" key={key}>
             <div className="text-md sm:text-lg text-muted-foreground/90 space-y-2">
               <p>{value.company}</p>
               <h3 className="md:text-5xl sm:text-4xl text-3xl leading-none text-muted-foreground">{value.title}</h3>
