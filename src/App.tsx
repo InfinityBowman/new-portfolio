@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Home from '@/src/Home';
 import NotFoundPage from '@/src/NotFound';
 import NavMenuToggle from '@/src/components/nav/NavMenuToggle';

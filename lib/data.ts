@@ -9,6 +9,10 @@ export const MY_STACK = {
       icon: '/logo/ts.svg',
     },
     {
+      name: 'SolidJS',
+      icon: '/logo/solid.svg',
+    },
+    {
       name: 'React',
       icon: '/logo/react.svg',
     },
@@ -23,10 +27,6 @@ export const MY_STACK = {
     {
       name: 'Tailwind CSS',
       icon: '/logo/tailwind.svg',
-    },
-    {
-      name: 'Emotion CSS',
-      icon: '/logo/emotion.png',
     },
     {
       name: 'GSAP',
@@ -59,16 +59,20 @@ export const MY_STACK = {
       icon: '/logo/dotnet.svg',
     },
     {
-      name: 'Deno.js',
-      icon: '/logo/deno.svg',
+      name: 'Bun',
+      icon: '/logo/bun.svg',
     },
     {
       name: 'Node.js',
       icon: '/logo/node.svg',
     },
     {
-      name: 'Express.js',
-      icon: '/logo/express.png',
+      name: 'AWS',
+      icon: '/logo/aws.svg',
+    },
+    {
+      name: 'Cloudflare',
+      icon: '/logo/cloudflare.svg',
     },
   ],
   database: [
@@ -79,6 +83,10 @@ export const MY_STACK = {
     {
       name: 'PostgreSQL',
       icon: '/logo/postgreSQL.png',
+    },
+    {
+      name: 'SQLite',
+      icon: '/logo/sqlite.svg',
     },
   ],
   tools: [
@@ -91,12 +99,12 @@ export const MY_STACK = {
       icon: '/logo/vite.svg',
     },
     {
-      name: 'Docker',
-      icon: '/logo/docker.svg',
+      name: 'Vitest',
+      icon: '/logo/vitest.svg',
     },
     {
-      name: 'AWS',
-      icon: '/logo/aws.png',
+      name: 'Docker',
+      icon: '/logo/docker.svg',
     },
   ],
 };
@@ -105,7 +113,7 @@ export const MY_EXPERIENCE = [
   {
     company: 'Applied Research Associates',
     title: 'Software Engineering Intern',
-    duration: 'May 2025 - August 2025',
+    duration: 'May 2025 - Present',
   },
   {
     company: 'University of Utah',
@@ -195,5 +203,5 @@ export const MY_PROJECTS: Project[] = [
 export const ABOUT = {
   title: "Hi, I'm Jacob",
   description:
-    "I’m passionate about building awesome applications that bring value to people. I enjoy learning all I can as a student and software developer, and love learning new things and applying that knowledge in the real world. I’m driven to figure out how things work and often find myself engrossed in the details. Starting Fall 2025, I'll be pursuing a Masters in Computer Science at Saint Louis University. After that my goal is to pursue a career as a software developer and apply my skills in JavaScript and C# to build powerful and performant applications.",
+    "I’m passionate about building awesome applications that bring value to people. I enjoy learning all I can as a student and software developer, and love exploring new things and applying that knowledge. Starting Fall 2025, I'll be pursuing a Masters in Computer Science at Saint Louis University. After that my goal is to pursue a career as a software developer and apply my skills in JavaScript and C# to build powerful and performant applications.",
 };

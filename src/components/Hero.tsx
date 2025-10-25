@@ -16,11 +16,8 @@ export default function Hero() {
   };
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen relative flex flex-col gap-8 justify-center items-center"
-    >
-      <div className="sr-only">Jacob Maynard Portfolio Website</div>
+    <section id="hero" className="min-h-screen relative flex flex-col gap-8 justify-center items-center">
+      <div className="sr-only">Jacob Maynard's Portfolio Website</div>
       <motion.h1
         className="text-5xl lg:text-6xl font-bold gradient-text animate-gradient opacity-90 bg-clip-text text-transparent p-1 text-center"
         initial={{ opacity: 0, y: -20 }}
@@ -32,6 +29,7 @@ export default function Hero() {
       <motion.div
         initial="hidden"
         animate="visible"
+        // @ts-ignore
         variants={fadeUpVariants}
         custom={0.4}
       >
@@ -40,6 +38,7 @@ export default function Hero() {
       <motion.div
         initial="hidden"
         animate="visible"
+        // @ts-ignore
         variants={fadeUpVariants}
         custom={0.6}
       ></motion.div>
