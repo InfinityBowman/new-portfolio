@@ -1,6 +1,6 @@
 ---
 title: 'No-Build JSX in WebView2'
-date: '2025-10-25'
+date: '2025-8-22'
 summary: 'Transpiling JSX on the fly in a WebView2 Winforms app.'
 ---
 
@@ -16,7 +16,7 @@ I mentioned a transpile script. How did we get a transpiler? If we think about e
 
 Here is the code that can generate a JavaScript function that we can then call from the C# winforms app with the untranspiled JSX string:
 
-```javascript
+```js
 import { Parser } from 'acorn';
 import acornJsx from 'acorn-jsx';
 import { buildJsx } from 'estree-util-build-jsx';

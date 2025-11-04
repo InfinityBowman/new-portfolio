@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import 'prismjs/themes/prism-tomorrow.css';
+import Prism from 'prismjs';
 
 const postFiles = import.meta.glob('./posts/*.md', { eager: true });
 
@@ -31,6 +33,12 @@ export default function Blog() {
 
   if (selected) {
     const post = posts.find((p) => p.slug === selected);
+
+    useEffect(() => {
+      // Highlight code blocks after post HTML is rendered
+      Prism.highlightAll();
+    }, [post.html]);
+
     return (
       <>
         <button
@@ -45,7 +53,7 @@ export default function Blog() {
         </button>
         <article className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md ">
           <h1 className="mb-4 text-4xl font-extrabold text-zinc-100 drop-shadow-lg">{post.title}</h1>
-          <hr className="relative bottom-1 w-10 h-0.5 bg-muted border-0 !m-0 !p-0" />
+          <hr className="relative bottom-1 w-10 h-0.5 bg-muted border-0 m-0! p-0!" />
           <span>{formatDate(post.date)}</span>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>

@@ -74,6 +74,11 @@
       cursor: none !important;
     }
   }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    font-family: 'Fira Mono', 'Jetbrains Mono', 'Consolas', monospace !important;
+  }
 }
 
 @layer utilities {

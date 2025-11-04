@@ -5,7 +5,7 @@ import NavMenuToggle from '@/src/components/nav/NavMenuToggle';
 import NavMenu from '@/src/components/nav/NavMenu';
 import Footer from '@/src/components/Footer';
 
-const Blog = lazy(() => import('@/src/Blog'));
+const Blog = lazy(() => import('@/src/Blog')); // I don't want blog to affect initial load time
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
