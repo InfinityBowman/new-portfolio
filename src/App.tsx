@@ -40,7 +40,9 @@ export default function App() {
         {isHomePage && <Home />}
         {isBlogPage && (
           <Suspense fallback={<div className="min-h-screen"></div>}>
-            <Blog />
+            <div className="min-h-screen">
+              <Blog />
+            </div>
           </Suspense>
         )}
         {!isHomePage && !isBlogPage && <NotFoundPage />}

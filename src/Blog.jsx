@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import 'prismjs/themes/prism-tomorrow.css';
 import Prism from 'prismjs';
+import NotFoundPage from '@/src/NotFound';
 
 const postFiles = import.meta.glob('./posts/*.md', { eager: true });
 
@@ -9,7 +10,8 @@ const posts = Object.entries(postFiles)
     const slug = path.split('/').pop().replace('.md', '');
     return { ...mod.attributes, html: mod.html, slug };
   })
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .filter((post) => post.published === 'true');
 
 function formatDate(dateString) {
   if (dateString === 'TBD') return dateString;
@@ -33,6 +35,23 @@ export default function Blog() {
 
   if (selected) {
     const post = posts.find((p) => p.slug === selected);
+    if (!post) {
+      return (
+        <>
+          <button
+            onClick={() => {
+              window.history.pushState({}, '', '/blog');
+              window.dispatchEvent(new Event('pushstate'));
+              setSelected(null);
+            }}
+            className="m-4 mb-6 hover:text-blue-300 flex items-center gap-1 transition-colors"
+          >
+            <span className="text-lg">←</span> <span>Back</span>
+          </button>
+          <NotFoundPage />
+        </>
+      );
+    }
 
     useEffect(() => {
       // Highlight code blocks after post HTML is rendered
@@ -47,9 +66,9 @@ export default function Blog() {
             window.dispatchEvent(new Event('pushstate'));
             setSelected(null);
           }}
-          className="m-4 mb-6 hover:text-blue-300 flex items-center gap-1 transition-colors"
+          className="m-4 mb-10 hover:text-blue-300 flex items-center gap-1 transition-colors"
         >
-          <span className="text-lg">←</span> <span>Back</span>
+          <span className="fixed text-lg top-4">← Back</span>
         </button>
         <article className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md ">
           <h1 className="mb-4 text-4xl font-extrabold text-zinc-100 drop-shadow-lg">{post.title}</h1>
@@ -66,7 +85,7 @@ export default function Blog() {
       <h2 className="text-4xl font-extrabold mb-6 text-zinc-100 drop-shadow-lg">Blog</h2>
       <ul className="w-full max-w-2xl space-y-4">
         {posts.map((post) => (
-          <li key={post.slug} className="border rounded-xl border-accent backdrop-blur-md hover:">
+          <li key={post.slug} className="border rounded-xl border-accent backdrop-blur-md hover:scale-[1.02] transition-all">
             <button
               className="p-4 text-left w-full text-2xl font-semibold transition-colors"
               onClick={() => {

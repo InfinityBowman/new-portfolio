@@ -1,5 +1,5 @@
 ---
-title: 'Exploring Local First Web Apps'
+title: 'Takeaways from Sync Conf'
 date: 'TBD'
 summary: 'TBD'
 published: 'false'

@@ -1,5 +1,5 @@
 ---
-title: 'Exploring Local First Web Apps'
+title: "Where's Religion?"
 date: 'TBD'
 summary: 'TBD'
 published: 'false'

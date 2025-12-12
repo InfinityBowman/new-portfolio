@@ -90,6 +90,17 @@ export default function Projects() {
                   <FaExternalLinkAlt />
                 </a>
               ) : null}
+              {project.readMore && (
+                <button
+                  className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
+                  onClick={() => {
+                    window.history.pushState({}, '', project.readMore);
+                    window.dispatchEvent(new Event('pushstate'));
+                  }}
+                >
+                  Read More
+                </button>
+              )}
             </div>
             {project.isVideo ? (
               <div className="flex flex-1 justify-center">

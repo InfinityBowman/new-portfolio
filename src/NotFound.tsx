@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import BackgroundGrid from '@/src/components/BackgroundGrid';
+import React from 'react';
 
 export default function NotFoundPage() {
-  const [opacity, setOpacity] = useState(0);
-
-  useEffect(() => {
-    // Fade in effect
-    setOpacity(0.2);
-  }, []);
-
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center">
-      {/* Background */}
-      <BackgroundGrid opacity={opacity} />
-
       <div className="z-10 text-center px-6 max-w-2xl">
         <div className="animate-fade-in">
           <h1 className="text-8xl font-bold mb-2 text-white">404</h1>

@@ -140,13 +140,25 @@ interface Project {
   source: string;
   isVideo: boolean;
   link?: string;
+  readMore?: string;
 }
 
 export const MY_PROJECTS: Project[] = [
   {
+    title: "Where's Religion?",
+    description:
+      'Maintained and added features to an open source platform at SLU with Next.js website and React Native cross platform mobile app. I worked with a client and lead a team of undergraduate capstone students to fix bugs and roll out new features and redesigns.',
+    media: '/projects/wheres-religion.png',
+    link: 'https://wheresreligion.netlify.app',
+    refUrl: 'https://github.com/oss-slu/lrda_mobile',
+    source: 'Github',
+    isVideo: false,
+    readMore: '/blog/wheres-religion'
+  },
+  {
     title: 'BeThere Landing Page',
     description:
-      'Landing page created for my senior capstone React Native mobile app project. Built with React, Emotion.js, and Motion/Framer Motion. I wanted to see what the CSS in JS was about, and I think I still prefer Tailwind especially with v4.',
+      'Landing page created for my senior capstone React Native mobile app project. Built with React, Emotion.js, and Motion/Framer Motion. I wanted to see what the CSS in JS was about, and it is neat but I do prefer Tailwind due to its nice coupling of components and CSS.',
     media: '/projects/bethere-landing.png',
     link: 'https://bethere.jacobmaynard.dev',
     refUrl: 'https://github.com/InfinityBowman/bethere-landing',
