@@ -42,7 +42,9 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
     { href: '/#about', label: 'About', id: 'about' },
     { href: '/#skills', label: 'Skills', id: 'skills' },
     { href: '/#experience', label: 'Experience', id: 'experience' },
+    { href: '/#education', label: 'Education', id: 'education' },
     { href: '/#projects', label: 'Projects', id: 'projects' },
+    { href: '/#contact', label: 'Contact', id: 'contact' },
     { href: '/blog', label: 'Blog', id: 'blog' },
   ];
 
@@ -120,8 +122,8 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
                       className={`block px-4 py-3 rounded-lg text-lg font-medium transition-all duration-400
                         ${
                           activeSection === item.id
-                            ? 'border-accent border-[1px] text-primary hover:bg-background/70'
-                            : 'border-[1px] border-transparent text-muted-foreground hover:text-primary hover:bg-background/70'
+                            ? 'border-accent border text-primary hover:bg-background/70'
+                            : 'border border-transparent text-muted-foreground hover:text-primary hover:bg-background/70'
                         }`}
                       onClick={(e) => handleAnchorClick(e, item.href)}
                     >

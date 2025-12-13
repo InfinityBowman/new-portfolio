@@ -132,6 +132,19 @@ export const MY_EXPERIENCE = [
   },
 ];
 
+export const MY_EDUCATION = [
+  {
+    institution: 'Saint Louis University',
+    degree: 'Masters of Artificial Intelligence',
+    duration: 'August 2025 - May 2027 (Expected)',
+  },
+  {
+    institution: 'University of Utah',
+    degree: 'Bachelors in Computer Science',
+    duration: 'August 2021 - May 2025',
+  },
+];
+
 interface Project {
   title: string;
   description: string;
@@ -153,7 +166,7 @@ export const MY_PROJECTS: Project[] = [
     refUrl: 'https://github.com/oss-slu/lrda_mobile',
     source: 'Github',
     isVideo: false,
-    readMore: '/blog/wheres-religion'
+    // readMore: '/blog/wheres-religion'
   },
   {
     title: 'BeThere Landing Page',
@@ -215,5 +228,5 @@ export const MY_PROJECTS: Project[] = [
 export const ABOUT = {
   title: "Hi, I'm Jacob",
   description:
-    "I’m passionate about building awesome applications that bring value to people. I enjoy learning all I can as a student and software developer, and love exploring new things and applying that knowledge. Starting Fall 2025, I'll be pursuing a Masters in Computer Science at Saint Louis University. After that my goal is to pursue a career as a software developer and apply my skills in JavaScript and C# to build powerful and performant applications.",
+    "I'm passionate about building awesome applications that bring value to people. I enjoy learning all I can as a student and software developer, and love exploring new things and applying that knowledge. I'm currently pursuing a Masters in Artificial Intelligence at Saint Louis University. My goal is to pursue a career as a software developer and apply my skills in JavaScript and C# to build powerful and performant applications.",
 };
