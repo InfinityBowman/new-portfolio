@@ -3,14 +3,13 @@ import { useState, useEffect } from 'preact/hooks';
 import Phrases from '@/src/components/Phrases';
 
 function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const [displayText, setDisplayText] = useState('');
-  const [isComplete, setIsComplete] = useState(false);
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+  const [displayText, setDisplayText] = useState(text);
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       let iteration = 0;
-      const maxIterations = text.length * 3;
+      const maxIterations = text.length * 4;
 
       const interval = setInterval(() => {
         setDisplayText(
@@ -19,7 +18,8 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
             .map((char, index) => {
               if (char === ' ') return ' ';
               // Lock in characters progressively
-              if (index < iteration / 3) {
+              const lockThreshold = iteration / 4;
+              if (index < lockThreshold) {
                 return text[index];
               }
               return chars[Math.floor(Math.random() * chars.length)];
@@ -32,9 +32,8 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
         if (iteration > maxIterations) {
           clearInterval(interval);
           setDisplayText(text);
-          setIsComplete(true);
         }
-      }, 40);
+      }, 50);
 
       return () => clearInterval(interval);
     }, delay * 1000);
@@ -42,15 +41,7 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
     return () => clearTimeout(timeout);
   }, [text, delay]);
 
-  return (
-    <span className={isComplete ? '' : 'font-mono'}>
-      {displayText ||
-        text
-          .split('')
-          .map(() => ' ')
-          .join('')}
-    </span>
-  );
+  return <span style={{ fontFamily: 'monospace', letterSpacing: '-0.05em' }}>{displayText}</span>;
 }
 
 export default function Hero() {
