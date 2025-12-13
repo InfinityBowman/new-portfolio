@@ -1,73 +1,86 @@
-import { motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'preact/hooks';
+
+const PHRASES = ['Software Engineer', 'Web Developer', 'Frontend Developer', 'Backend Developer', 'Web Performance'] as const;
+
+type Phase = 'typing' | 'holding' | 'deleting';
 
 export default function Phrases() {
-  const phrases = ['Software Engineer', 'Web Developer', 'Frontend Developer', 'Web Performance'];
+  const phrases = PHRASES;
 
-  // Each phrase is 4 seconds long
-  const duration = phrases.length * 4;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [phase, setPhase] = useState<Phase>('typing');
+  const [showCursor, setShowCursor] = useState(true);
 
-  // Calculate the times for each phrase to animate the way I want
-  const times = phrases.map((_, index) => {
-    const totalLength = 1;
-    const phraseLength = totalLength / phrases.length;
+  const currentPhrase = phrases[currentIndex] ?? '';
+  const displayText = useMemo(() => currentPhrase.slice(0, subIndex), [currentPhrase, subIndex]);
 
-    const pauseRatio = 0.03 / 0.34;
-    const activeRatio = 0.14 / 0.34;
+  useEffect(() => {
+    // Tunables
+    const TYPE_MS = 80;
+    const DELETE_MS = 40;
+    const HOLD_MS = 1400;
+    const BETWEEN_MS = 250;
 
-    const start = index * phraseLength;
+    let delay = TYPE_MS;
 
-    const p1 = start;
-    const p2 = p1 + pauseRatio * phraseLength + 0.01;
+    if (phase === 'typing') {
+      if (subIndex >= currentPhrase.length) {
+        delay = HOLD_MS;
+      } else {
+        delay = TYPE_MS;
+      }
+    }
 
-    const p4 = p1 + (pauseRatio + activeRatio + pauseRatio) * phraseLength;
-    const end = p4 + activeRatio * phraseLength;
+    if (phase === 'deleting') {
+      delay = subIndex === 0 ? BETWEEN_MS : DELETE_MS;
+    }
 
-    const p3 = p4 + 0.05;
+    if (phase === 'holding') {
+      delay = HOLD_MS;
+    }
 
-    return [
-      parseFloat(p1.toFixed(4)),
-      parseFloat(p2.toFixed(4)),
-      parseFloat(p3.toFixed(4)),
-      parseFloat(end.toFixed(4)),
-    ];
-  });
+    const timeout = setTimeout(() => {
+      if (phase === 'typing') {
+        if (subIndex < currentPhrase.length) {
+          setSubIndex((value) => value + 1);
+          return;
+        }
+        setPhase('deleting');
+        return;
+      }
 
-  const box = {
-    opacity: 0,
-    bottom: 0,
-    height: 50,
-    borderRadius: 5,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
+      if (phase === 'deleting') {
+        if (subIndex > 0) {
+          setSubIndex((value) => value - 1);
+          return;
+        }
+        setCurrentIndex((value) => (value + 1) % phrases.length);
+        setPhase('typing');
+        return;
+      }
+
+      // holding
+      setPhase('deleting');
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [currentPhrase, phase, phrases.length, subIndex]);
+
+  // Cursor blink
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   return (
-    <div className="relative flex w-xl justify-center mt-10 text-3xl sm:text-4xl lg:text-5xl opacity-80">
-      {phrases.map((phrase, index) => (
-        <motion.div
-          key={index}
-          className="absolute"
-          animate={{
-            opacity: [0, 1, 1, 0],
-          }}
-          transition={{
-            duration: duration,
-            ease: 'linear',
-            times: times[index],
-            repeat: Infinity,
-            // First phrase should bounce in on initial load
-            ...(index === 0
-              ? {
-                  scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
-                }
-              : {}),
-          }}
-          style={{ ...box, paddingBottom: '8px' }}
-        >
-          {phrase}
-        </motion.div>
-      ))}
+    <div className="relative flex w-xl justify-center text-3xl sm:text-4xl lg:text-5xl opacity-80">
+      <div className="flex items-center">
+        <span>{displayText}</span>
+        <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} ml-1`}>|</span>
+      </div>
     </div>
   );
-};
+}
