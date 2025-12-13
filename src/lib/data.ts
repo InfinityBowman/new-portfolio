@@ -139,7 +139,7 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     title: 'Audio Manager, Student Media',
     duration: 'September 2024 - May 2025',
     highlights: [
-      'This was just kind of a fun role I took for my senior year after my previous summer internship before I resumed it again after graduation.',
+      'This was a fun role I took during my final two semesters of undergrad between two summer internships at ARA.',
       'My experience in music production and audio engineering allowed me to manage audio equipment, assist in recording sessions, and support live broadcasts for university events.',
       'I also gave recommendations for new equipment purchases and processes to ensure the longevity of the equipment',
     ],
