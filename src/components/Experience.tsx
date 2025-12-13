@@ -11,7 +11,10 @@ export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const hasDetails = useMemo(() => MY_EXPERIENCE.map((item) => Boolean(item.highlights?.length || item.tech?.length)), []);
+  const hasDetails = useMemo(
+    () => MY_EXPERIENCE.map((item) => Boolean(item.description || item.highlights?.length || item.tech?.length)),
+    [],
+  );
 
   useGSAP(
     () => {
@@ -101,11 +104,13 @@ export default function Experience() {
                   className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                 >
                   <div className="overflow-hidden">
-                    <div className="pt-4">
+                    <div className="pt-4 space-y-4">
+                      {value.description ? <p className="text-md sm:text-lg text-muted-foreground/90">{value.description}</p> : null}
+
                       {value.highlights?.length ? (
-                        <ul className="space-y-2 text-muted-foreground/90">
+                        <ul className="list-disc list-outside ml-5 space-y-2 text-muted-foreground/90">
                           {value.highlights.map((item) => (
-                            <li key={item} className="text-md sm:text-lg">
+                            <li key={item} className="text-md sm:text-lg pl-1">
                               {item}
                             </li>
                           ))}
@@ -113,7 +118,7 @@ export default function Experience() {
                       ) : null}
 
                       {value.tech?.length ? (
-                        <div className={`${value.highlights?.length ? 'mt-4' : ''} text-muted-foreground/90`}>
+                        <div className="text-muted-foreground/90">
                           <p className="text-sm sm:text-base">Tech</p>
                           <p className="text-md sm:text-lg">{value.tech.join(' • ')}</p>
                         </div>

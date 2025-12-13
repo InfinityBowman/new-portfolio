@@ -113,6 +113,7 @@ export interface ExperienceItem {
   company: string;
   title: string;
   duration: string;
+  description?: string;
   highlights?: string[];
   tech?: string[];
 }
@@ -122,15 +123,16 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     company: 'Applied Research Associates',
     title: 'Software Engineering Intern',
     duration: 'May 2025 - Present',
-    highlights: [
+    description:
       'ARA is a national research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
+    highlights: [
       'Developed and maintained classified data visualization software for the U.S. Air Force, contributing across the full stack with a focus on analytical tooling and visualization',
       'Built tools and applications in .NET/C# and implemented D3.js-based interactive visualizations for complex datasets',
       'Supported data analysis workflows using Python and collaborated with researchers and engineers to translate analytical requirements into performant, user-facing visual tools',
       'Went above and beyond to identify and solve hard problems and introduce new ideas and tools to improve productivity and capabilities',
       '"Jacob is a high-achieving, goal-oriented individual, and he is a pleasure to work with." - Project Lead Feedback',
     ],
-    tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python'],
+    tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python', 'Winforms', 'Webview2'],
   },
   {
     company: 'University of Utah',
@@ -146,7 +148,12 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     company: 'Applied Research Associates',
     title: 'Computer/Data Scientist Intern',
     duration: 'May 2024 - August 2024',
-    highlights: ['See above for full description.'],
+    highlights: [
+      'Worked on tools that provided digital modeling, simulation and analysis tools for aircraft survivability.',
+      'Responsible for re-imaging and creating a software product based on an engineering-level prototype developed in Python. As lead for the project, I was responsible for all phases of application development: deriving requirements; building user documentation; and working with senior software professionals to address distribution challenges associated with deploying software on U.S. Air Force networks',
+      'The project was also used as a testing ground for more modern technologies that I had recommended be introduced into the company’s development stack.',
+    ],
+    tech: ['.NET/C#', 'JavaScript', 'Bokeh', 'Python', 'Winforms', 'Webview2'],
   },
   {
     company: 'University of Utah',
