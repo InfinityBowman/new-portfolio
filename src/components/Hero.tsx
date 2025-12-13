@@ -18,7 +18,7 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
             .map((char, index) => {
               if (char === ' ') return ' ';
               // Lock in characters progressively
-              const lockThreshold = iteration / 4;
+              const lockThreshold = iteration / 2;
               if (index < lockThreshold) {
                 return text[index];
               }
