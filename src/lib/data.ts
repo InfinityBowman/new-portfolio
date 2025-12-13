@@ -166,7 +166,7 @@ export const MY_PROJECTS: Project[] = [
     refUrl: 'https://github.com/oss-slu/lrda_mobile',
     source: 'Github',
     isVideo: false,
-    // readMore: '/blog/wheres-religion'
+    readMore: '/blog/wheres-religion'
   },
   {
     title: 'BeThere Landing Page',

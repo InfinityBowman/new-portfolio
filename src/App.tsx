@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { useLenis } from 'lenis/react';
 import Home from '@/src/Home';
 import NotFoundPage from '@/src/NotFound';
 import NavMenuToggle from '@/src/components/nav/NavMenuToggle';
@@ -10,6 +11,7 @@ const Blog = lazy(() => import('@/src/Blog')); // I don't want blog to affect in
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lenis = useLenis();
 
   const handleMenuToggle = () => {
     setIsMenuOpen((prev) => !prev);
@@ -28,6 +30,13 @@ export default function App() {
       window.removeEventListener('pushstate', handleLocationChange);
     };
   }, []);
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, [currentPath, lenis]);
 
   const isHomePage = currentPath === '/';
   const isBlogPage = currentPath.startsWith('/blog');
