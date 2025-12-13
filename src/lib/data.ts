@@ -148,6 +148,8 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     company: 'Applied Research Associates',
     title: 'Computer/Data Scientist Intern',
     duration: 'May 2024 - August 2024',
+    description:
+      'ARA is an international research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
     highlights: [
       'Maintained and developed software that provided digital modeling, simulation, and analysis tools for aircraft survivability.',
       'Responsible for re-imagining and creating a software product based on an engineering-level prototype developed in Python. As lead for the project, I was responsible for all phases of application development: deriving requirements; building user documentation; and working with senior software professionals to address distribution challenges associated with deploying software on U.S. Air Force networks',
