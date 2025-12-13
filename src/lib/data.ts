@@ -124,12 +124,12 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     title: 'Software Engineering Intern',
     duration: 'May 2025 - Present',
     description:
-      'ARA is a national research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
+      'ARA is an international research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
     highlights: [
       'Developed and maintained classified data visualization software for the U.S. Air Force, contributing across the full stack with a focus on analytical tooling and visualization',
       'Built tools and applications in .NET/C# and implemented D3.js-based interactive visualizations for complex datasets',
       'Supported data analysis workflows using Python and collaborated with researchers and engineers to translate analytical requirements into performant, user-facing visual tools',
-      'Went above and beyond to identify and solve hard problems and introduce new ideas and tools to improve productivity and capabilities',
+      'Went above and beyond to identify and solve hard problems and introduce new ideas and technologies to improve productivity and capabilities',
       '"Jacob is a high-achieving, goal-oriented individual, and he is a pleasure to work with." - Project Lead Feedback',
     ],
     tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python', 'Winforms', 'Webview2'],
@@ -149,9 +149,9 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
     title: 'Computer/Data Scientist Intern',
     duration: 'May 2024 - August 2024',
     highlights: [
-      'Worked on tools that provided digital modeling, simulation and analysis tools for aircraft survivability.',
-      'Responsible for re-imaging and creating a software product based on an engineering-level prototype developed in Python. As lead for the project, I was responsible for all phases of application development: deriving requirements; building user documentation; and working with senior software professionals to address distribution challenges associated with deploying software on U.S. Air Force networks',
-      'The project was also used as a testing ground for more modern technologies that I had recommended be introduced into the company’s development stack.',
+      'Maintained and developed software that provided digital modeling, simulation, and analysis tools for aircraft survivability.',
+      'Responsible for re-imagining and creating a software product based on an engineering-level prototype developed in Python. As lead for the project, I was responsible for all phases of application development: deriving requirements; building user documentation; and working with senior software professionals to address distribution challenges associated with deploying software on U.S. Air Force networks',
+      'The project was also used as a testing ground for more modern technologies that I recommended be introduced into the company’s development stack.',
     ],
     tech: ['.NET/C#', 'JavaScript', 'Bokeh', 'Python', 'Winforms', 'Webview2'],
   },
@@ -166,16 +166,24 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
   },
 ];
 
-export const MY_EDUCATION = [
+export interface EducationItem {
+  institution: string;
+  degree: string;
+  duration: string;
+  description?: string;
+}
+
+export const MY_EDUCATION: EducationItem[] = [
   {
     institution: 'Saint Louis University',
-    degree: 'Masters of Artificial Intelligence',
+    degree: 'Masters of Science in Artificial Intelligence',
     duration: 'August 2025 - May 2027 (Expected)',
   },
   {
     institution: 'University of Utah',
-    degree: 'Bachelors in Computer Science',
+    degree: 'Bachelors of Science in Computer Science',
     duration: 'August 2021 - May 2025',
+    description: 'with Certificate in Data Science',
   },
 ];
 
@@ -224,7 +232,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'This Website',
     description:
-      'My porfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis (smooth scrolling), Vite, and TypeScript.',
+      'My portfolio website made with React, TailwindCSS, GSAP, Motion/Framer Motion, Lenis (smooth scrolling), Vite, and TypeScript.',
     media: '/projects/new-portfolio.png',
     refUrl: 'https://github.com/InfinityBowman/new-portfolio',
     source: 'Github',
@@ -251,7 +259,7 @@ export const MY_PROJECTS: Project[] = [
   {
     title: 'MoonBlight',
     description:
-      "Video game made in Unity with C#. A 2D bullet hell conceptualized, designed, and created within 48 Hours for the University of Utah's March 2022 Game Jam. Worked with a large team of programmers, desginers, and artists to create a neat little game.",
+      "Video game made in Unity with C#. A 2D bullet hell conceptualized, designed, and created within 48 Hours for the University of Utah's March 2022 Game Jam. Worked with a large team of programmers, designers, and artists to create a neat little game.",
     media: '/projects/moon-blight.jpg',
     refUrl: 'https://monkeybarrelgames.itch.io/moonblight',
     source: 'Itch.io',

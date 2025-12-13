@@ -67,6 +67,7 @@ export default function Education() {
               <p>{edu.institution}</p>
               <h3 className="md:text-5xl sm:text-4xl text-3xl leading-none text-muted-foreground">{edu.degree}</h3>
               <p>{edu.duration}</p>
+              {edu.description ? <p className="text-muted-foreground/80">{edu.description}</p> : null}
             </div>
           </div>
         ))}
