@@ -109,26 +109,53 @@ export const MY_STACK = {
   ],
 };
 
-export const MY_EXPERIENCE = [
+export interface ExperienceItem {
+  company: string;
+  title: string;
+  duration: string;
+  highlights?: string[];
+  tech?: string[];
+}
+
+export const MY_EXPERIENCE: ExperienceItem[] = [
   {
     company: 'Applied Research Associates',
     title: 'Software Engineering Intern',
     duration: 'May 2025 - Present',
+    highlights: [
+      'ARA is a national research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
+      'Developed and maintained classified data visualization software for the U.S. Air Force, contributing across the full stack with a focus on analytical tooling and visualization',
+      'Built tools and applications in .NET/C# and implemented D3.js-based interactive visualizations for complex datasets',
+      'Supported data analysis workflows using Python and collaborated with researchers and engineers to translate analytical requirements into performant, user-facing visual tools',
+      'Went above and beyond to identify and solve hard problems and introduce new ideas and tools to improve productivity and capabilities',
+      '"Jacob is a high-achieving, goal-oriented individual, and he is a pleasure to work with." - Project Lead Feedback',
+    ],
+    tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python'],
   },
   {
     company: 'University of Utah',
     title: 'Audio Manager, Student Media',
     duration: 'September 2024 - May 2025',
+    highlights: [
+      'This was just kind of a fun role I took for my senior year after my previous summer internship before I resumed it again after graduation.',
+      'My experience in music production and audio engineering allowed me to manage audio equipment, assist in recording sessions, and support live broadcasts for university events.',
+      'I also gave recommendations for new equipment purchases and processes to ensure the longevity of the equipment',
+    ],
   },
   {
     company: 'Applied Research Associates',
     title: 'Computer/Data Scientist Intern',
     duration: 'May 2024 - August 2024',
+    highlights: ['See above for full description.'],
   },
   {
     company: 'University of Utah',
     title: 'Membership Services Associate',
     duration: 'September 2022 - May 2024',
+    highlights: [
+      'Provided excellent customer service to gym members, assisting with check-ins, membership inquiries, and facility usage.',
+      'Maintained a clean and organized front desk area, ensuring a welcoming environment for all members.',
+    ],
   },
 ];
 
@@ -166,7 +193,7 @@ export const MY_PROJECTS: Project[] = [
     refUrl: 'https://github.com/oss-slu/lrda_mobile',
     source: 'Github',
     isVideo: false,
-    readMore: '/blog/wheres-religion'
+    readMore: '/blog/wheres-religion',
   },
   {
     title: 'BeThere Landing Page',
