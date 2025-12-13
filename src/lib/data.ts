@@ -122,7 +122,7 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
   {
     company: 'Applied Research Associates',
     title: 'Software Engineering Intern',
-    duration: 'May 2025 - Present',
+    duration: 'Full-time onsite: May–Aug 2025; Part-time remote: Aug 2025–Present',
     description:
       'ARA is an international research and engineering firm that provides innovative, practical solutions to complex problems in defense, space, security, and critical infrastructure.',
     highlights: [
@@ -130,6 +130,7 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
       'Built tools and applications in .NET/C# and implemented D3.js-based interactive visualizations for complex datasets',
       'Supported data analysis workflows using Python and collaborated with researchers and engineers to translate analytical requirements into performant, user-facing visual tools',
       'Went above and beyond to identify and solve hard problems and introduce new ideas and technologies to improve productivity and capabilities',
+      'Invited to continue part-time remotely during the academic year based on outstanding performance and impact during the summer internships',
       '"Jacob is a high-achieving, goal-oriented individual, and he is a pleasure to work with." - Project Lead Feedback',
     ],
     tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python', 'Winforms', 'Webview2'],
