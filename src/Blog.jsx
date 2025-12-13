@@ -38,6 +38,7 @@ export default function Blog() {
   };
 
   const titleTransitionName = (slug) => `blog-title-${slug}`;
+  const cardTransitionName = (slug) => `blog-card-${slug}`;
 
   // Update slug on page change
   useEffect(() => {
@@ -85,7 +86,10 @@ export default function Blog() {
         >
           <span className="fixed text-lg top-4">← Back</span>
         </button>
-        <article className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md ">
+        <article
+          className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md "
+          style={{ viewTransitionName: cardTransitionName(post.slug) }}
+        >
           <h1
             className="mb-4 text-4xl font-extrabold text-zinc-100 drop-shadow-lg"
             style={{ viewTransitionName: titleTransitionName(post.slug) }}
@@ -105,7 +109,11 @@ export default function Blog() {
       <h2 className="text-4xl font-extrabold mb-6 text-zinc-100 drop-shadow-lg">Blog</h2>
       <ul className="w-full max-w-2xl space-y-4">
         {posts.map((post) => (
-          <li key={post.slug} className="border rounded-xl border-accent backdrop-blur-md hover:scale-[1.02] transition-all">
+          <li
+            key={post.slug}
+            className="border rounded-xl border-accent backdrop-blur-md hover:scale-[1.02] transition-all"
+            style={{ viewTransitionName: cardTransitionName(post.slug) }}
+          >
             <button
               className="p-4 text-left w-full text-2xl font-semibold transition-colors"
               onClick={() => {
