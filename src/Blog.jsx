@@ -28,6 +28,17 @@ export default function Blog() {
   const blogPostSlug = blogPostMatch ? blogPostMatch[1] : null;
   const [selected, setSelected] = useState(blogPostSlug);
 
+  const startTransition = (update) => {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      // eslint-disable-next-line no-undef
+      document.startViewTransition(() => update());
+      return;
+    }
+    update();
+  };
+
+  const titleTransitionName = (slug) => `blog-title-${slug}`;
+
   // Update slug on page change
   useEffect(() => {
     setSelected(blogPostSlug);
@@ -40,9 +51,11 @@ export default function Blog() {
         <>
           <button
             onClick={() => {
-              window.history.pushState({}, '', '/blog');
-              window.dispatchEvent(new Event('pushstate'));
-              setSelected(null);
+              startTransition(() => {
+                window.history.pushState({}, '', '/blog');
+                window.dispatchEvent(new Event('pushstate'));
+                setSelected(null);
+              });
             }}
             className="m-4 mb-6 hover:text-blue-300 flex items-center gap-1 transition-colors"
           >
@@ -62,16 +75,23 @@ export default function Blog() {
       <>
         <button
           onClick={() => {
-            window.history.pushState({}, '', '/blog');
-            window.dispatchEvent(new Event('pushstate'));
-            setSelected(null);
+            startTransition(() => {
+              window.history.pushState({}, '', '/blog');
+              window.dispatchEvent(new Event('pushstate'));
+              setSelected(null);
+            });
           }}
           className="m-4 mb-10 hover:text-blue-300 flex items-center gap-1 transition-colors"
         >
           <span className="fixed text-lg top-4">← Back</span>
         </button>
         <article className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md ">
-          <h1 className="mb-4 text-4xl font-extrabold text-zinc-100 drop-shadow-lg">{post.title}</h1>
+          <h1
+            className="mb-4 text-4xl font-extrabold text-zinc-100 drop-shadow-lg"
+            style={{ viewTransitionName: titleTransitionName(post.slug) }}
+          >
+            {post.title}
+          </h1>
           <hr className="relative bottom-1 w-10 h-0.5 bg-muted border-0 m-0! p-0!" />
           <span>{formatDate(post.date)}</span>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -89,12 +109,15 @@ export default function Blog() {
             <button
               className="p-4 text-left w-full text-2xl font-semibold transition-colors"
               onClick={() => {
-                window.history.pushState({}, '', `/blog/${post.slug}`);
-                window.dispatchEvent(new Event('pushstate'));
-                setSelected(post.slug);
+                startTransition(() => {
+                  window.history.pushState({}, '', `/blog/${post.slug}`);
+                  window.dispatchEvent(new Event('pushstate'));
+                  setSelected(post.slug);
+                });
               }}
             >
-              {post.title} <span className="text-zinc-400 text-base font-normal"> ({formatDate(post.date)})</span>
+              <span style={{ viewTransitionName: titleTransitionName(post.slug) }}>{post.title}</span>{' '}
+              <span className="text-zinc-400 text-base font-normal"> ({formatDate(post.date)})</span>
               <div className="text-zinc-400 text-base mt-1">{post.summary}</div>
             </button>
           </li>
