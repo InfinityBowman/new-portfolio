@@ -1,7 +1,7 @@
 ---
-title: "Where's Religion?"
+title: 'Tech Lead of "Where’s Religion?"'
 date: '12/12/25'
-summary: "My work on Where's Religion?"
+summary: 'How I led a team to overhaul "Where’s Religion?" by modernizing its tech stack, security, and UX for ethnographers and cultural studies, in partnership with Saint Louis University.'
 published: 'true'
 ---
 

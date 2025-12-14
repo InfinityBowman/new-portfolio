@@ -1,7 +1,7 @@
 ---
 title: 'No-Build JSX in WebView2'
 date: '2025-8-22'
-summary: 'Transpiling JSX on the fly in a WebView2 Winforms app.'
+summary: 'Transpiling JSX on the fly in a WebView2 Winforms application.'
 published: 'true'
 ---
 

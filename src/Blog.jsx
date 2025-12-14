@@ -107,7 +107,7 @@ export default function Blog() {
   return (
     <section className="min-h-screen flex flex-col gap-8 justify-center items-center py-12 px-4">
       <h2 className="text-4xl font-extrabold mb-6 text-zinc-100 drop-shadow-lg">Blog</h2>
-      <ul className="w-full max-w-2xl space-y-4">
+      <ul className="w-full max-w-3xl space-y-4">
         {posts.map((post) => (
           <li
             key={post.slug}
