@@ -5,7 +5,7 @@ summary: 'Building a local-first, real-time collaborative platform for research 
 published: 'true'
 ---
 
-### Why CoRATES
+### Why <a href="https://corates.org" target="_blank" rel="noopener">CoRATES</a>?
 
 Systematic reviews and meta-analyses are inherently collaborative, detail-oriented, and iterative. Yet many of the tools used to conduct them are either single-user, poorly suited for real-time collaboration, or built on workflows that assume serialized edits and manual coordination. Or, just don't exist at all, forcing researchers to do everything manually which is time consuming and error prone. I built CoRATES along with top researchers to explore what a blazingly fast, modern, collaborative research appraisal tool could look like if it were designed from the ground up for concurrency, low latency, and distributed teams.
 
