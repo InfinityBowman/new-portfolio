@@ -194,14 +194,23 @@ interface Project {
   title: string;
   description: string;
   media: string;
-  refUrl: string;
-  source: string;
+  refUrl?: string;
+  source?: string;
   isVideo: boolean;
   link?: string;
   readMore?: string;
 }
 
 export const MY_PROJECTS: Project[] = [
+  {
+    title: 'CoRATES',
+    description:
+      'CoRATES is a Collaborative Research Appraisal Tool for Evidence Synthesis. It is a real-time, collaborative web application for conducting systematic reviews and meta-analyses, enabling multiple researchers to concurrently appraise studies with conflict-free synchronization. The platform is designed as a local-first PWA on Cloudflare Workers, using Durable Objects and Yjs (CRDTs) for real-time collaboration, with D1 and R2 for persistent storage. It features full authentication and billing flows (OAuth, magic links, optional 2FA, admin impersonation, Stripe), as well as a custom MCP server to improve agent-driven development workflows.',
+    media: '/projects/corates.png',
+    link: 'https://corates.org',
+    isVideo: false,
+    readMore: '/blog/corates',
+  },
   {
     title: "Where's Religion?",
     description:

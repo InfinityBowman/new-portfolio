@@ -1,5 +1,6 @@
 import SectionTitle from '@/src/components/SectionTitle';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { HiOutlineExternalLink } from "react-icons/hi";
+
 import { MY_PROJECTS } from '@/src/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -71,15 +72,16 @@ export default function Projects() {
               <h3 className="md:text-3xl sm:text-2xl text-1xl leading-none text-muted-foreground">{project.title}</h3>
               <hr className="relative bottom-1 w-10 h-0.5 bg-muted border-0 my-2" />
               <p className="max-w-[60ch] mb-6">{project.description}</p>
-
-              <a
-                href={project.refUrl}
-                target="_blank"
-                className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
-              >
-                <span>{project.source}</span>
-                <FaExternalLinkAlt />
-              </a>
+              {project.source && project.refUrl && (
+                <a
+                  href={project.refUrl}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
+                >
+                  <span>{project.source}</span>
+                  <HiOutlineExternalLink size={18} />
+                </a>
+              )}
               {project.link ? (
                 <a
                   href={project.link}
@@ -87,7 +89,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
                 >
                   <span>Website</span>
-                  <FaExternalLinkAlt />
+                  <HiOutlineExternalLink size={18} />
                 </a>
               ) : null}
               {project.readMore && (
