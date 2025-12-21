@@ -282,5 +282,5 @@ export const MY_PROJECTS: Project[] = [
 export const ABOUT = {
   title: "Hi, I'm Jacob",
   description:
-    "I'm passionate about building applications that bring value to people. I enjoy learning all I can as a student and software developer, and love exploring new things and applying that knowledge. I'm currently pursuing a Masters in Artificial Intelligence at Saint Louis University. My goal is to pursue a career as a software developer and work with awesome peoeple to continue learning and building cool stuff.",
+    "I'm passionate about building applications that bring value to people. I enjoy learning all I can as a student and software developer, and love exploring new things and applying that knowledge. I'm currently pursuing a Masters in Artificial Intelligence at Saint Louis University. My goal is to be a great software developer so I can work with awesome people to continue learning and building cool stuff.",
 };
