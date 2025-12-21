@@ -1,6 +1,6 @@
 ---
 title: 'Developing CoRATES'
-date: '12-15-25'
+date: '2025-12-15'
 summary: 'Building a local-first, real-time collaborative platform for research appraisal on the Cloudflare edge.'
 published: 'true'
 ---
