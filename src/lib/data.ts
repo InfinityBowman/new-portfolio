@@ -179,12 +179,12 @@ export interface EducationItem {
 export const MY_EDUCATION: EducationItem[] = [
   {
     institution: 'Saint Louis University',
-    degree: 'Masters of Science in Artificial Intelligence',
+    degree: 'Master of Science in Artificial Intelligence',
     duration: 'August 2025 - May 2027 (Expected)',
   },
   {
     institution: 'University of Utah',
-    degree: 'Bachelors of Science in Computer Science',
+    degree: 'Bachelor of Science in Computer Science',
     duration: 'August 2021 - May 2025',
     description: 'with Certificate in Data Science',
   },
