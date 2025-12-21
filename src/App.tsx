@@ -52,17 +52,10 @@ export default function App() {
         onClose={() => setIsMenuOpen(false)}
       />
       <main className="relative z-10">
-        {isHomePage && (
-          <div style={{ viewTransitionName: 'page-content' }}>
-            <Home />
-          </div>
-        )}
+        {isHomePage && <Home />}
         {isBlogPage && (
           <Suspense fallback={<div className="min-h-screen"></div>}>
-            <div
-              className="min-h-screen"
-              style={{ viewTransitionName: 'page-content' }}
-            >
+            <div className="min-h-screen">
               <Blog />
             </div>
           </Suspense>
