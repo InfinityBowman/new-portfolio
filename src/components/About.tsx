@@ -11,6 +11,15 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const startTransition = (update: () => void) => {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      // eslint-disable-next-line no-undef
+      document.startViewTransition(() => update());
+      return;
+    }
+    update();
+  };
+
   useGSAP(
     () => {
       const slideOverEl = containerRef.current?.querySelectorAll('.slide-over');
@@ -106,8 +115,10 @@ export default function About() {
             aria-label="Blog"
             onClick={(e) => {
               e.preventDefault();
-              window.history.pushState({}, '', '/blog');
-              window.dispatchEvent(new Event('pushstate'));
+              startTransition(() => {
+                window.history.pushState({}, '', '/blog');
+                window.dispatchEvent(new Event('pushstate'));
+              });
             }}
           >
             <span className="text-secondary-foreground group-hover:text-primary transition-colors">My Blog</span>

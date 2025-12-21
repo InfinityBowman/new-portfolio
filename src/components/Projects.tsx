@@ -12,6 +12,15 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const startTransition = (update: () => void) => {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      // eslint-disable-next-line no-undef
+      document.startViewTransition(() => update());
+      return;
+    }
+    update();
+  };
+
   useGSAP(
     () => {
       const slideUpEl = containerRef.current?.querySelectorAll('.slide-up');
@@ -96,8 +105,10 @@ export default function Projects() {
                 <button
                   className="inline-flex items-center gap-2 border border-muted p-2 text-primary bg-background rounded-lg hover:bg-secondary focus:border-primary"
                   onClick={() => {
-                    window.history.pushState({}, '', project.readMore);
-                    window.dispatchEvent(new Event('pushstate'));
+                    startTransition(() => {
+                      window.history.pushState({}, '', project.readMore);
+                      window.dispatchEvent(new Event('pushstate'));
+                    });
                   }}
                 >
                   Read More

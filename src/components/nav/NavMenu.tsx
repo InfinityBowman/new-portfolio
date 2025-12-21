@@ -10,13 +10,71 @@ interface NavMenuProps {
 export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
   const [activeSection, setActiveSection] = useState(window.location.pathname.startsWith('/blog') ? 'blog' : 'hero');
 
-  // Update active section based on scroll position
+  const menuItems = [
+    { href: '/#hero', label: 'Home', id: 'hero' },
+    { href: '/#about', label: 'About', id: 'about' },
+    { href: '/#skills', label: 'Skills', id: 'skills' },
+    { href: '/#experience', label: 'Experience', id: 'experience' },
+    { href: '/#education', label: 'Education', id: 'education' },
+    { href: '/#projects', label: 'Projects', id: 'projects' },
+    { href: '/#contact', label: 'Contact', id: 'contact' },
+    { href: '/blog', label: 'Blog', id: 'blog' },
+  ];
+
+  // Update active section when route changes
+  useEffect(() => {
+    const handleLocationChange = () => {
+      if (window.location.pathname.startsWith('/blog')) {
+        setActiveSection('blog');
+      } else if (window.location.pathname === '/') {
+        // When on home page, determine active section from scroll or default to hero
+        const heroElement = document.getElementById('hero');
+        if (heroElement) {
+          const scrollPosition = window.scrollY + 200;
+          const sections = menuItems.map((item) => item.id);
+
+          for (const section of sections) {
+            if (section === 'blog') continue; // Skip blog, it's not on home page
+            const element = document.getElementById(section);
+            if (!element) continue;
+
+            const rect = element.getBoundingClientRect();
+            const topPosition = rect.top + window.scrollY;
+            const bottomPosition = topPosition + rect.height;
+
+            if (scrollPosition >= topPosition && scrollPosition < bottomPosition) {
+              setActiveSection(section);
+              return;
+            }
+          }
+          setActiveSection('hero');
+        } else {
+          setActiveSection('hero');
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('pushstate', handleLocationChange);
+    handleLocationChange(); // Initial check
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('pushstate', handleLocationChange);
+    };
+  }, []);
+
+  // Update active section based on scroll position (only on home page)
   useEffect(() => {
     const handleScroll = () => {
+      // Only update on home page
+      if (window.location.pathname !== '/') return;
+
       const sections = menuItems.map((item) => item.id);
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
+        if (section === 'blog') continue; // Skip blog, it's not on home page
         const element = document.getElementById(section);
         if (!element) continue;
 
@@ -37,25 +95,25 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
     };
   }, []);
 
-  const menuItems = [
-    { href: '/#hero', label: 'Home', id: 'hero' },
-    { href: '/#about', label: 'About', id: 'about' },
-    { href: '/#skills', label: 'Skills', id: 'skills' },
-    { href: '/#experience', label: 'Experience', id: 'experience' },
-    { href: '/#education', label: 'Education', id: 'education' },
-    { href: '/#projects', label: 'Projects', id: 'projects' },
-    { href: '/#contact', label: 'Contact', id: 'contact' },
-    { href: '/blog', label: 'Blog', id: 'blog' },
-  ];
+  const startTransition = (update: () => void) => {
+    if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+      // eslint-disable-next-line no-undef
+      document.startViewTransition(() => update());
+      return;
+    }
+    update();
+  };
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
     if (href.startsWith('/blog')) {
-      window.history.pushState({}, '', '/blog');
-      window.dispatchEvent(new Event('pushstate'));
-      setActiveSection('blog');
-      onClose();
+      startTransition(() => {
+        window.history.pushState({}, '', '/blog');
+        window.dispatchEvent(new Event('pushstate'));
+        setActiveSection('blog');
+        onClose();
+      });
       return;
     }
 
@@ -64,30 +122,37 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
 
     if (window.location.pathname !== '/') {
       // Navigate to home, then scroll after navigation
-      window.history.pushState({}, '', '/');
-      window.dispatchEvent(new Event('pushstate'));
-      // Wait for the page to update, then scroll
-      setTimeout(() => {
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
+      startTransition(() => {
+        window.history.pushState({}, '', '/');
+        window.dispatchEvent(new Event('pushstate'));
+        setActiveSection(targetId);
+        // Wait for the page to update, then scroll
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 50);
+        onClose();
+      });
     } else if (targetElement) {
+      setActiveSection(targetId);
       window.scrollTo({
         top: targetElement.offsetTop,
         behavior: 'smooth',
       });
+      onClose();
     }
-
-    onClose();
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div className="fixed inset-0 z-40" onClick={onClose} />
+          <motion.div
+            className="fixed inset-0 z-40"
+            onClick={onClose}
+          />
 
           {/* Menu panel */}
           <motion.div

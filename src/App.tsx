@@ -43,13 +43,26 @@ export default function App() {
 
   return (
     <>
-      <NavMenuToggle onToggle={handleMenuToggle} isOpen={isMenuOpen} />
-      <NavMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <NavMenuToggle
+        onToggle={handleMenuToggle}
+        isOpen={isMenuOpen}
+      />
+      <NavMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
       <main className="relative z-10">
-        {isHomePage && <Home />}
+        {isHomePage && (
+          <div style={{ viewTransitionName: 'page-content' }}>
+            <Home />
+          </div>
+        )}
         {isBlogPage && (
           <Suspense fallback={<div className="min-h-screen"></div>}>
-            <div className="min-h-screen">
+            <div
+              className="min-h-screen"
+              style={{ viewTransitionName: 'page-content' }}
+            >
               <Blog />
             </div>
           </Suspense>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import 'prismjs/themes/prism-tomorrow.css';
 import Prism from 'prismjs';
 import NotFoundPage from '@/src/NotFound';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const postFiles = import.meta.glob('./posts/*.md', { eager: true });
 
@@ -60,7 +61,7 @@ export default function Blog() {
             }}
             className="m-4 mb-6 hover:text-blue-300 flex items-center gap-1 transition-colors"
           >
-            <span className="text-lg">←</span> <span>Back</span>
+            <FaArrowLeft className="w-4 h-4" /> <span>Back</span>
           </button>
           <NotFoundPage />
         </>
@@ -84,7 +85,7 @@ export default function Blog() {
           }}
           className="m-4 mb-10 hover:text-blue-300 flex items-center gap-1 transition-colors"
         >
-          <span className="fixed text-lg top-4">← Back</span>
+          <FaArrowLeft className="w-4 h-4" /> <span>Back</span>
         </button>
         <article
           className="min-h-screen max-w-sm xs:max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl prose prose-invert mx-auto p-8 mb-8 rounded-lg shadow-md border border-accent backdrop-blur-md "
@@ -124,7 +125,7 @@ export default function Blog() {
                 });
               }}
             >
-              <span style={{ viewTransitionName: titleTransitionName(post.slug) }}>{post.title}</span>{' '}
+              <span style={{ viewTransitionName: titleTransitionName(post.slug) }}>{post.title}</span>
               <span className="text-zinc-400 text-base font-normal"> ({formatDate(post.date)})</span>
               <div className="text-zinc-400 text-base mt-1">{post.summary}</div>
             </button>
