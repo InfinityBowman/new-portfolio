@@ -83,7 +83,7 @@ export default function About() {
   );
 
   return (
-    <section id="about" ref={containerRef} className="min-h-screen">
+    <section id="about" ref={containerRef} className="">
       <SectionTitle title="whoami" />
 
       <div className="sm:space-y-10 space-y-6">

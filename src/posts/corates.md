@@ -5,21 +5,26 @@ summary: 'Building a local-first, real-time collaborative platform for research 
 published: 'true'
 ---
 
-### Why <a href="https://corates.org" target="_blank" rel="noopener">CoRATES</a>?
+Research synthesis pulls together findings across many studies to determine what actually works, for whom, and under what conditions. But those conclusions are only as credible as the evidence behind them, which is why study appraisal is foundational to systematic reviews and meta-analyses. In practice, it is also one of the more complex and time-consuming parts of the process.
 
-Systematic reviews and meta-analyses are inherently collaborative, detail-oriented, and iterative. Yet many of the tools used to conduct them are either single-user, poorly suited for real-time collaboration, or built on workflows that assume serialized edits and manual coordination. Or, just don't exist at all, forcing researchers to do everything manually which is time consuming and error prone. I built CoRATES along with top researchers to explore what a blazingly fast, modern, collaborative research appraisal tool could look like if it were designed from the ground up for concurrency, low latency, and distributed teams.
+Working closely with a top evidence synthesist, I quickly learned that while well-established appraisal instruments exist, the software support around them was fragmented. Critical steps were spread across PDFs, spreadsheets, and statistical software for visualization, with some work, like scoring, still done manually. It was far more complicated and messy than it needed to be.
 
-At its core, CoRATES is a Collaborative Research Appraisal Tool for Evidence Synthesis. It enables multiple researchers to appraise studies simultaneously without overwriting each other’s work, following local-first principles that prioritize speed, resilience, and offline capability.
+As a software engineer, I saw these challenges as solvable design problems. I built <a href="https://corates.org" target="_blank" rel="noopener">CoRATES</a> alongside leading researchers to explore what a blazingly fast, modern, collaborative research appraisal platform (Linear/Figma style) could look like if it were designed from the ground up for concurrency, low latency, and distributed teams.
 
-### Core Design Goals
+At its core, CoRATES is a Collaborative Research Appraisal Tool for Evidence Synthesis. It enables multiple researchers to appraise studies simultaneously without overwriting each other's work, following local-first principles that prioritize speed, resilience, and offline capability.
 
-From the beginning, the project was guided by a few clear principles:
+The rest of this post dives into how CoRATES was built. I'll walk through the design goals, architecture, and tradeoffs behind it, including how real-time collaboration, local-first behavior, and edge-native infrastructure shaped the system, and what I learned building it as a solo developer.
 
-- Real-time collaboration: Multiple users should be able to edit the same appraisal simultaneously.
-- Local-first: The app should feel instantaneous, rely on optimistic updates, and remain usable offline.
-- Edge-native: Avoid a centralized backend in favor of globally distributed execution (with cost efficiency as a bonus).
-- Production-grade features: Authentication, billing, logs, and permissions should be first-class concerns, not afterthoughts.
-- AI-friendly by design: When integrating AI, it should act as a collaborative partner embedded in the workflow, not just a boring chat interface.
+### Design Goals
+
+From the start, CoRATES was designed around a few core goals shaped directly by real appraisal workflows:
+
+- **Seamless collaboration**: Support true parallel work so multiple reviewers can independently code and score studies without overwriting one another.
+- **Intuitive double-coding and reconciliation**: Make it easy to compare ratings, resolve disagreements, and document final decisions in one place.
+- **All-in-one workflow**: Everything should happen in a single application, from completing appraisal checklists, to intuitive reconciliation, automatic scoring, and generating publication-ready outputs. No bouncing between PDFs, spreadsheets, and external tools.
+- **Rigor by design**: Structure the workflow to support consistency and transparency, reduce errors and help researchers apply best practices in study appraisal.
+- **Local-first performance**: Keep the app fast and resilient, with offline support and background syncing built in.
+- **Designed for future AI integration**: The data model and workflows were intentionally structured so AI can be integrated later as a collaborative aid within the appraisal process, supporting judgment and consistency rather than sitting outside the workflow.
 
 The architecture, design, and technology choices were heavily influenced by tools like <a href="https://linear.app/homepage" target="_blank" rel="noopener">Linear</a> and <a href="https://livestore.dev/" target="_blank" rel="noopener">LiveStore</a>.
 
@@ -33,7 +38,7 @@ CoRATES is built as a local-first Progressive Web App deployed on Cloudflare’s
 - D1 is used as a SQLite relational store for cross-project data such as users and billing information.
 - R2 stores larger assets such as PDFs and images.
 
-This combination allows collaborative state to live close to users while still remaining consistent and durable.
+The system is fully multi-tenant, with project data isolated per organization. This combination allows collaborative state to live close to users while still remaining consistent and durable.
 
 ### Real-Time Collaboration with CRDTs
 
@@ -87,8 +92,10 @@ Building CoRATES reinforced several ideas:
 - Yjs is very good. At first I had brushed it off as a older thing in favor of the newer ElectricSQL and Zero Sync but Yjs really knows what it is doing and has solved its problems well. Combining it with Durable Objects I think is a very powerful architecture.
 - Cloudflare is amazing. I had never used them for anything before, I had only done things on AWS, various VPSs, Netlify, Vercel, Supabase, and Firebase. Cloudflare is just really nice and does things in a way I like. I do think they can continue to improve and be better. I think Convex really has the infra as code thing solved quite well and Cloudflare is getting pretty close.
 
-### What’s Next
+### What's Next
 
-CoRATES is an ongoing project. Future work includes deeper analytics, expanded export formats, and additional collaboration features tailored to large research teams.
+CoRATES is an ongoing project. Near-term work includes native PDF annotation, deeper analytics, expanded export formats, and additional collaboration features designed for larger research teams.
 
-More broadly, the project serves as an exploration of how modern web primitives—CRDTs, edge compute, and local-first design—can be combined to build serious, production-grade collaborative tools without traditional server infrastructure.
+Within the next month, we plan to run structured user testing with a broader group of researchers, followed by a full public launch in late spring.
+
+More broadly, CoRATES continues to explore how modern web primitives, CRDTs, edge compute, and local-first design can be combined to build serious, production-grade collaborative tools for evidence synthesis without traditional server infrastructure.

@@ -19,7 +19,7 @@ export default function Skills() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
+          start: 'top 90%',
           end: 'bottom 80%',
           scrub: 0.5,
         },
@@ -55,21 +55,35 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" ref={containerRef} className=" min-h-screen">
+    <section
+      id="skills"
+      ref={containerRef}
+      className=" min-h-screen"
+    >
       <SectionTitle title="My Stack" />
 
       <div className="space-y-20">
         {Object.entries(MY_STACK).map(([key, value]) => (
-          <div className="grid md:grid-cols-12" key={key}>
+          <div
+            className="grid md:grid-cols-12"
+            key={key}
+          >
             <div className="sm:col-span-5">
               <h3 className="slide-up text-5xl leading-none text-muted-foreground uppercase mb-4">{key}</h3>
             </div>
 
             <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
               {value.map((item) => (
-                <div className="slide-up flex gap-2 sm:gap-3.5 items-center leading-none" key={item.name}>
+                <div
+                  className="slide-up flex gap-2 sm:gap-3.5 items-center leading-none"
+                  key={item.name}
+                >
                   <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
-                    <img src={item.icon} alt={item.name + ' icon'} className="w-full h-full object-contain" />
+                    <img
+                      src={item.icon}
+                      alt={item.name + ' icon'}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <span className="text-xl sm:text-2xl">{item.name}</span>
                 </div>

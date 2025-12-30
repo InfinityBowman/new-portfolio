@@ -9,7 +9,7 @@ import Contact from '@/src/components/Contact';
 
 export default function Home() {
   return (
-    <div className="space-y-30 mx-8 sm:mr-16">
+    <div className="space-y-60 mx-8 sm:mr-16">
       <Hero />
       <About />
       <Skills />
