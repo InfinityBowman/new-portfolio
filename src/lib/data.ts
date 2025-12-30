@@ -106,6 +106,10 @@ export const MY_STACK = {
       name: 'Docker',
       icon: '/logo/docker.svg',
     },
+    {
+      name: 'MCP',
+      icon: '/logo/mcp.svg',
+    },
   ],
 };
 

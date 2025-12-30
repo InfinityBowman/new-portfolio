@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'preact/hooks';
 import Phrases from '@/src/components/Phrases';
+import { FaDownload } from 'react-icons/fa';
 
 function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
   const [displayText, setDisplayText] = useState(text);
@@ -84,7 +85,16 @@ export default function Hero() {
         // @ts-ignore
         variants={fadeUpVariants}
         custom={0.6}
-      ></motion.div>
+      >
+        <a
+          href="/Jacob Maynard Resume 2025.pdf"
+          download="Jacob Maynard Resume 2025.pdf"
+          className="group flex items-center gap-2 border border-muted p-3 px-5 text-primary bg-background rounded-lg hover:bg-secondary hover:border-primary transition-colors"
+        >
+          <FaDownload size={18} />
+          <span className="text-secondary-foreground group-hover:text-primary transition-colors">Download Resume</span>
+        </a>
+      </motion.div>
     </section>
   );
 }
