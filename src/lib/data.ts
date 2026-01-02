@@ -52,6 +52,10 @@ export const MY_STACK = {
       name: 'Bokeh',
       icon: '/logo/bokeh.svg',
     },
+    {
+      name: 'TanStack',
+      icon: '/logo/tanstack.png',
+    },
   ],
   backend: [
     {
@@ -73,6 +77,14 @@ export const MY_STACK = {
     {
       name: 'Cloudflare',
       icon: '/logo/cloudflare.svg',
+    },
+    {
+      name: 'Hono',
+      icon: '/logo/hono.svg',
+    },
+    {
+      name: 'FastAPI',
+      icon: '/logo/fastapi.svg',
     },
   ],
   database: [

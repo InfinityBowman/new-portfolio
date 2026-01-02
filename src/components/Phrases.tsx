@@ -1,6 +1,14 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
-const PHRASES = ['Software Engineer', 'Web Developer', 'Frontend Developer', 'Backend Developer', 'Web Performance'] as const;
+const PHRASES = [
+  'Software Engineer',
+  'Web Developer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Product Minded',
+  'Entrepreneur?',
+  'Data Scientist',
+] as const;
 
 type Phase = 'typing' | 'holding' | 'deleting';
 
