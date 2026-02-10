@@ -114,7 +114,7 @@ export function createNodes(config: ConstellationConfig): ConstellationNode[] {
       colorG: color.g,
       colorB: color.b,
       phase: Math.random() * Math.PI * 2,
-      size: 0.5 + Math.random() * 1.0,
+      size: 0.3 + Math.random() * 1.7,
     });
   }
   return nodes;
@@ -171,7 +171,7 @@ export function computeConnections(nodes: ConstellationNode[], config: Constella
 
       if (distSq < maxDistSq) {
         const dist = Math.sqrt(distSq);
-        const alpha = (1.0 - dist / maxDist) * 0.5;
+        const alpha = (1.0 - dist / maxDist) * 0.7;
 
         const b = nodes[j];
         const pi = lineIdx * 6;

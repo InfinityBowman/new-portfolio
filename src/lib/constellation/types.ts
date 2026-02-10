@@ -46,27 +46,28 @@ function hexToColor(hex: string, weight: number): NodeColor {
 }
 
 export const DEFAULT_CONFIG: ConstellationConfig = {
-  nodeCount: 200,
-  sphereRadius: 8,
-  connectionDistance: 4.0,
+  nodeCount: 260,
+  sphereRadius: 10,
+  connectionDistance: 5.0,
   maxConnectionsPerNode: 8,
   cameraFov: 45,
-  cameraDistance: 12,
-  rotationSpeed: 0.03,
-  noiseScale: 0.3,
-  noiseSpeed: 0.15,
+  cameraDistance: 13,
+  rotationSpeed: 0.02,
+  noiseScale: 0.25,
+  noiseSpeed: 0.12,
   colors: [
-    hexToColor('#a78bfa', 0.30),  // light purple
-    hexToColor('#8b5cf6', 0.25),  // purple
-    hexToColor('#6366f1', 0.20),  // indigo
-    hexToColor('#c084fc', 0.10),  // lavender/pink
+    hexToColor('#a78bfa', 0.28),  // light purple
+    hexToColor('#8b5cf6', 0.22),  // purple
+    hexToColor('#6366f1', 0.18),  // indigo
+    hexToColor('#c084fc', 0.12),  // lavender/pink
     hexToColor('#f0abfc', 0.08),  // magenta/pink
     hexToColor('#60a5fa', 0.07),  // blue
+    hexToColor('#e0e7ff', 0.05),  // near-white sparkle
   ],
-  focalDistance: 12.0,
-  dofStrength: 3.5,
-  pulseMin: 0.85,
+  focalDistance: 13.0,
+  dofStrength: 4.5,
+  pulseMin: 0.82,
   pulseMax: 1.0,
-  bgColor: [0.05, 0.02, 0.12],       // dark purple
-  lineColor: [0.65, 0.55, 0.85],      // light lavender
+  bgColor: [0.04, 0.015, 0.10],      // deeper dark purple
+  lineColor: [0.65, 0.55, 0.85],     // light lavender
 };
