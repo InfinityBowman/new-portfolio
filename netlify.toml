@@ -5,8 +5,7 @@
 [[redirects]]
   from = "/urbanstl/*"
   to = "https://urban-stl-analytics.jacobamaynard.workers.dev/:splat"
-  status = 200
-  force = true
+  status = 302
 
 [[redirects]]
   from = "/*"
