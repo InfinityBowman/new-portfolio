@@ -3,6 +3,12 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/urbanstl/*"
+  to = "https://urban-stl-analytics.jacobamaynard.workers.dev/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
