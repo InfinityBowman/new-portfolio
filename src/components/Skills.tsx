@@ -84,7 +84,7 @@ export default function Skills() {
                       alt={item.name + ' icon'}
                       className="w-full h-full object-contain"
                     />
-                  </div>
+                </div>
                   <span className="text-xl sm:text-2xl">{item.name}</span>
                 </div>
               ))}

@@ -56,6 +56,10 @@ export const MY_STACK = {
       name: 'TanStack',
       icon: '/logo/tanstack.png',
     },
+    {
+      name: 'Electron',
+      icon: '/logo/electron.svg',
+    },
   ],
   backend: [
     {
@@ -149,7 +153,7 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
       'Invited to continue part-time remotely during the academic year based on outstanding performance and impact during the summer internships',
       '"Jacob is a high-achieving, goal-oriented individual, and he is a pleasure to work with." - Project Lead Feedback',
     ],
-    tech: ['.NET/C#', 'JavaScript', 'D3.js', 'Python', 'Winforms', 'Webview2'],
+    tech: ['.NET/C#', 'C', 'C++', 'JavaScript', 'D3.js', 'Python', 'Winforms', 'Webview2'],
   },
   {
     company: 'University of Utah',
@@ -218,6 +222,34 @@ interface Project {
 }
 
 export const MY_PROJECTS: Project[] = [
+  {
+    title: 'Urban STL Analytics',
+    description:
+      'HackSLU Hackathon Grand Prize Winner. A unified urban data analytics platform for the City of St. Louis with an AI agent that can control the entire interface. Users ask a question about St. Louis and the agent toggles map overlays, filters datasets, builds charts, and performs RAG over the data to answer it. Combines 311 complaints, crime data, transit equity, vacancy triage, food access, census demographics, and ARPA fund expenditures into a fullscreen Map Explorer with seven toggleable Mapbox GL layers, cross-dataset analysis, custom vacancy triage scoring, transit equity algorithms, and a ChartBuilder. Built with TanStack Start, React 19, Mapbox GL JS, Recharts, and deployed on Cloudflare Workers.',
+    media: '/projects/urban-stl-analytics.png',
+    link: 'https://jacobmaynard.dev/urbanstl',
+    refUrl: 'https://github.com/InfinityBowman/urban-stl-analytics',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'RepoHub',
+    description:
+      'A macOS desktop app for managing local development projects. Scans your repos directory, auto-detects project types (Node.js, Python, Rust, Go, Java, Swift, monorepos), and lets you run, monitor, and navigate everything from one place. Features inline terminals with auto-detected commands, monorepo support with per-package terminals, dependency health auditing, GitHub PR integration, git status tracking, and port monitoring. Built with Electron, React 19, TypeScript, Vite, Tailwind CSS v4, Zustand, node-pty, and xterm.js.',
+    media: '/projects/repohub.png',
+    refUrl: 'https://github.com/InfinityBowman/repohub',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'NetRadar',
+    description:
+      'A macOS desktop app that visualizes all network signals around your Mac in real time: Wi-Fi access points, LAN devices, Bluetooth devices, Bonjour/mDNS services, and active connections. Uses tshark (Wireshark CLI) for deep packet inspection, streaming live protocol dissection to color-coded arc visualizations around each node. Leverages Wireshark\'s OUI database for MAC vendor identification and TTL-based OS fingerprinting. Features an interactive D3.js force-directed graph with force and radial layout modes, real-time scanning, and signal-type filtering. Built with Electron, React 19, D3.js, TypeScript, Vite, and Tailwind CSS v4.',
+    media: '/projects/netradar.png',
+    refUrl: 'https://github.com/InfinityBowman/NetRadar',
+    source: 'Github',
+    isVideo: false,
+  },
   {
     title: 'CoRATES',
     description:
