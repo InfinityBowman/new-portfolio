@@ -5,7 +5,6 @@ import './global.css';
 import 'lenis/dist/lenis.css';
 import App from './App';
 import ScrollProgressIndicator from '@/src/components/ScrollProgressIndicator';
-import CustomCursor from '@/src/components/CustomCursor';
 import BackgroundParticles from '@/src/components/BackgroundParticles';
 import BackgroundCanvas from '@/src/components/BackgroundGrid';
 
@@ -33,7 +32,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <BackgroundParticles opacity={0.5} />
         <BackgroundCanvas opacity={0.1} />
         <ScrollProgressIndicator />
-        <CustomCursor />
       </ReactLenis>
     )}
   </React.StrictMode>,

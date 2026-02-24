@@ -68,13 +68,6 @@
     display: none;
   }
 
-  /* Custom cursor on large screens only */
-  @media (min-width: 769px) {
-    * {
-      cursor: none !important;
-    }
-  }
-
   code[class*='language-'],
   pre[class*='language-'] {
     font-family: 'Fira Mono', 'Jetbrains Mono', 'Consolas', monospace !important;
