@@ -105,9 +105,9 @@ export default function Digest() {
   return (
     <section className="min-h-screen flex flex-col gap-8 justify-center items-center py-12 px-4">
       <div className="w-full max-w-3xl text-center">
-        <h2 className="text-4xl font-extrabold mb-4 text-zinc-100 drop-shadow-lg">AI Digest</h2>
+        <h2 className="text-4xl font-extrabold mb-4 text-zinc-100 drop-shadow-lg">Foxfire</h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          A weekly roundup of the most interesting developments in AI, curated every Saturday by my{' '}
+          A weekly signal flare from the edges of tech — AI, open source, engineering, and whatever else caught fire this week. Curated every Saturday by{' '}
           <a
             href="https://openclaw.org"
             target="_blank"
@@ -116,7 +116,7 @@ export default function Digest() {
           >
             OpenClaw
           </a>{' '}
-          assistant, Felix.
+          assistant Felix 🦊, running on a homelab somewhere in the midwest.
         </p>
       </div>
       <ul className="w-full max-w-3xl space-y-4">
