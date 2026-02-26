@@ -7,6 +7,7 @@ import NavMenu from '@/src/components/nav/NavMenu';
 import Footer from '@/src/components/Footer';
 
 const Blog = lazy(() => import('@/src/Blog')); // I don't want blog to affect initial load time
+const Digest = lazy(() => import('@/src/Digest'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -40,17 +41,12 @@ export default function App() {
 
   const isHomePage = currentPath === '/';
   const isBlogPage = currentPath.startsWith('/blog');
+  const isDigestPage = currentPath.startsWith('/digest');
 
   return (
     <>
-      <NavMenuToggle
-        onToggle={handleMenuToggle}
-        isOpen={isMenuOpen}
-      />
-      <NavMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
+      <NavMenuToggle onToggle={handleMenuToggle} isOpen={isMenuOpen} />
+      <NavMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <main className="relative z-10">
         {isHomePage && <Home />}
         {isBlogPage && (
@@ -60,7 +56,14 @@ export default function App() {
             </div>
           </Suspense>
         )}
-        {!isHomePage && !isBlogPage && <NotFoundPage />}
+        {isDigestPage && (
+          <Suspense fallback={<div className="min-h-screen"></div>}>
+            <div className="min-h-screen">
+              <Digest />
+            </div>
+          </Suspense>
+        )}
+        {!isHomePage && !isBlogPage && !isDigestPage && <NotFoundPage />}
       </main>
       <Footer />
     </>

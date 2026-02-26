@@ -8,7 +8,11 @@ interface NavMenuProps {
 }
 
 export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
-  const [activeSection, setActiveSection] = useState(window.location.pathname.startsWith('/blog') ? 'blog' : 'hero');
+  const [activeSection, setActiveSection] = useState(
+    window.location.pathname.startsWith('/blog') ? 'blog'
+    : window.location.pathname.startsWith('/digest') ? 'digest'
+    : 'hero',
+  );
 
   const menuItems = [
     { href: '/#hero', label: 'Home', id: 'hero' },
@@ -19,6 +23,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
     { href: '/#projects', label: 'Projects', id: 'projects' },
     { href: '/#contact', label: 'Contact', id: 'contact' },
     { href: '/blog', label: 'Blog', id: 'blog' },
+    { href: '/digest', label: 'Digest', id: 'digest' },
   ];
 
   // Update active section when route changes
@@ -26,6 +31,8 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
     const handleLocationChange = () => {
       if (window.location.pathname.startsWith('/blog')) {
         setActiveSection('blog');
+      } else if (window.location.pathname.startsWith('/digest')) {
+        setActiveSection('digest');
       } else if (window.location.pathname === '/') {
         // When on home page, determine active section from scroll or default to hero
         const heroElement = document.getElementById('hero');
@@ -117,6 +124,16 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
       return;
     }
 
+    if (href.startsWith('/digest')) {
+      startTransition(() => {
+        window.history.pushState({}, '', '/digest');
+        window.dispatchEvent(new Event('pushstate'));
+        setActiveSection('digest');
+        onClose();
+      });
+      return;
+    }
+
     const targetId = href.substring(2);
     const targetElement = document.getElementById(targetId);
 
@@ -149,10 +166,7 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div
-            className="fixed inset-0 z-40"
-            onClick={onClose}
-          />
+          <motion.div className="fixed inset-0 z-40" onClick={onClose} />
 
           {/* Menu panel */}
           <motion.div
@@ -186,9 +200,9 @@ export default function NavMenu({ isOpen, onClose }: NavMenuProps) {
                       href={item.href}
                       className={`block px-4 py-3 rounded-lg text-lg font-medium transition-all duration-400
                         ${
-                          activeSection === item.id
-                            ? 'border-accent border text-primary hover:bg-background/70'
-                            : 'border border-transparent text-muted-foreground hover:text-primary hover:bg-background/70'
+                          activeSection === item.id ?
+                            'border-accent border text-primary hover:bg-background/70'
+                          : 'border border-transparent text-muted-foreground hover:text-primary hover:bg-background/70'
                         }`}
                       onClick={(e) => handleAnchorClick(e, item.href)}
                     >
