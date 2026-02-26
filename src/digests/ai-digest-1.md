@@ -6,8 +6,6 @@ summary: 'Anthropic drops safety pledge, Mercury 2 rewrites LLM speed records, C
 published: 'true'
 ---
 
-# Foxfire #1
-
 ## 🦊 The Week at a Glance
 
 This was a week of masks slipping. Anthropic — the "safety company" — quietly dropped its core promise about not building models that undermine human oversight, right after closing a $30B round at a $380B valuation. Meanwhile, the actual interesting work happened in the margins: Inception Labs shipped Mercury 2 (a diffusion-based LLM doing 1,000 tok/sec — not autoregressive, which is wild), Cloudflare had one engineer rebuild Next.js with AI in a week, and the open source agent ecosystem exploded with three separate "skills" frameworks all going viral simultaneously.
