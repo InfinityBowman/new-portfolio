@@ -1,5 +1,5 @@
 export const MY_STACK = {
-  frontend: [
+  languages: [
     {
       name: 'Javascript',
       icon: '/logo/js.svg',
@@ -8,6 +8,24 @@ export const MY_STACK = {
       name: 'Typescript',
       icon: '/logo/ts.svg',
     },
+    {
+      name: 'Python',
+      icon: '/logo/python.svg',
+    },
+    {
+      name: 'Rust',
+      icon: '/logo/rust.svg',
+    },
+    {
+      name: 'C#',
+      icon: '/logo/csharp.svg',
+    },
+    {
+      name: 'C',
+      icon: '/logo/c.svg',
+    },
+  ],
+  frontend: [
     {
       name: 'SolidJS',
       icon: '/logo/solid.svg',
@@ -104,6 +122,10 @@ export const MY_STACK = {
       name: 'SQLite',
       icon: '/logo/sqlite.svg',
     },
+    {
+      name: 'Drizzle',
+      icon: '/logo/drizzle.svg',
+    },
   ],
   tools: [
     {
@@ -125,6 +147,26 @@ export const MY_STACK = {
     {
       name: 'MCP',
       icon: '/logo/mcp.svg',
+    },
+    {
+      name: 'Terraform',
+      icon: '/logo/terraform.svg',
+    },
+    {
+      name: 'Nginx',
+      icon: '/logo/nginx.svg',
+    },
+    {
+      name: 'Traefik',
+      icon: '/logo/traefik.svg',
+    },
+    {
+      name: 'Airflow',
+      icon: '/logo/airflow.svg',
+    },
+    {
+      name: 'TortoiseSVN',
+      icon: '/logo/tortoisesvn.svg',
     },
   ],
 };
@@ -222,6 +264,34 @@ interface Project {
 }
 
 export const MY_PROJECTS: Project[] = [
+  {
+    title: 'PaleoWaifu',
+    description:
+      'A prehistoric animal waifu gacha game. Collect 101 creatures spanning the Cambrian through the Pleistocene, trade with other players, and build your ultimate paleontology collection. Features gacha pulls with a full pity system, rate-up banners, an encyclopedia with real paleontology data, a trading marketplace, daily rewards, and a Discord bot with slash commands and an XP leveling system. Built with TanStack Start, React 19, Tailwind CSS v4, shadcn/ui, Drizzle ORM, Cloudflare D1, and deployed on Cloudflare Workers.',
+    media: '/projects/paleowaifu.png',
+    link: 'https://paleo-waifu.jacobmaynard.dev',
+    refUrl: 'https://github.com/InfinityBowman/paleo-waifu',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'HomeLab PaaS',
+    description:
+      'A mini Platform-as-a-Service built in Rust, running on a home server (Ubuntu Server 24.04). Features a full CI/CD pipeline via GitHub Actions with a self-hosted runner, automatic Docker container deployment, Cloudflare Tunnel networking with wildcard DNS, and Traefik reverse proxy with Docker label auto-discovery. The Rust workspace includes 7 crates covering a REST API (Axum), SQLite persistence (sqlx), Docker management (bollard), and Cloudflare integration. Also hosts services like Plausible analytics, n8n workflow automation, and Dozzle log viewer.',
+    media: '/projects/homelab.png',
+    refUrl: 'https://github.com/InfinityBowman/home-lab',
+    source: 'Github',
+    isVideo: false,
+  },
+  {
+    title: 'Civic Data Warehouse',
+    description:
+      'An ETL data pipeline for civic data built with Apache Airflow, PostgreSQL, and LocalStack (S3). Uses Astronomer CLI for local development with Docker Compose orchestrating Airflow, Postgres, and LocalStack containers. Designed to ingest, transform, and warehouse civic datasets for analysis and visualization.',
+    media: '/projects/civic-data-warehouse.png',
+    refUrl: 'https://github.com/InfinityBowman/civic-data-warehouse',
+    source: 'Github',
+    isVideo: false,
+  },
   {
     title: 'Urban STL Analytics',
     description:
